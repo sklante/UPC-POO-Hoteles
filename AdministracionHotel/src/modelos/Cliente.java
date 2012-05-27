@@ -16,6 +16,12 @@ public class Cliente extends Usuario {
         this.codigoCliente = codigoCliente;
     }
 
+    public Cliente(String codigoCliente, String nombre){
+        super(nombre);
+        this.codigoCliente = codigoCliente;
+
+    }
+
     public String getCodigoCliente() {
         return codigoCliente;
     }

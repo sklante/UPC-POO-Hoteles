@@ -1,13 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelos;
 
-/**
- *
- * @author CARLOS
- */
 public class Cuenta {
     private String correo;
     private String passWord;
@@ -30,6 +23,11 @@ public class Cuenta {
     public String getNombreHotel() {
         return nombreHotel;
     }
+
+    public void setNombreHotel(String nombreHotel) {
+        this.nombreHotel = nombreHotel;
+    }
+
 
     public String getPassWord() {
         return passWord;

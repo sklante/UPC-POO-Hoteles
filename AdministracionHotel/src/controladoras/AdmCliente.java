@@ -1,16 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controladoras;
 
 import java.util.ArrayList;
 import modelos.Cuenta;
 
-/**
- *
- * @author CARLOS
- */
+
 public class AdmCliente {
     
     private ArrayList<Cuenta> cuentas;

@@ -1,16 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controladoras;
 import controladoras.Usuarios;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Angel
- */
+
 public class UsuariosTest {
   Usuarios Usuarios = new Usuarios();
     

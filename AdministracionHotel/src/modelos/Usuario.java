@@ -1,13 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelos;
 
-/**
- *
- * @author Angel
- */
+
 public class Usuario {
  private String nombre;
     private String apellido;
@@ -19,6 +13,9 @@ public class Usuario {
         this.apellido = apellido;
         this.correoElectronico = correoElectronico;
         this.password = password;
+    }
+    public Usuario(String nombre){
+        this.nombre = nombre;
     }
 
     public String getApellido() {

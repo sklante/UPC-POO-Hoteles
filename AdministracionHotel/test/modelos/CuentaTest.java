@@ -9,10 +9,7 @@ import controladoras.AdmCliente;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author CARLOS
- */
+
 public class CuentaTest {
     
        AdmCliente admCuenta = new AdmCliente();
