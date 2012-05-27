@@ -9,15 +9,15 @@ package modelos;
  * @author Angel
  */
 public class Usuario {
-   private String nombre;
+ private String nombre;
     private String apellido;
-    private String userName;
+    private String correoElectronico;
     private String password;
 
-    public Usuario(String nombre, String apellido, String userName, String password) {
+    public Usuario(String nombre, String apellido, String correoElectronico, String password) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.userName = userName;
+        this.correoElectronico = correoElectronico;
         this.password = password;
     }
 
@@ -45,12 +45,12 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getcorreoElectronico() {
+        return correoElectronico;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
     
     

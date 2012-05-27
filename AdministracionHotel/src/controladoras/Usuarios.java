@@ -29,7 +29,7 @@ public class Usuarios {
         simularTabla();
         Usuario usuarioEncontrado = null;
         for(Usuario usuario : dbUsuarios){
-            if(usuario.getUserName().equals(userName))
+            if(usuario.getcorreoElectronico().equals(userName))
                 usuarioEncontrado = usuario;
         }
         return usuarioEncontrado;            
