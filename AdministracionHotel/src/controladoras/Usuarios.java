@@ -18,18 +18,12 @@ public class Usuarios {
         
     }
     
-    public boolean verificarCorreoElectronico(String user){
-        if(user != null){
-            return true;
-        }
-        return false;
-    }
-    
+  
     public Usuario existeCorreoElectronico(String userName){
         simularTabla();
         Usuario usuarioEncontrado = null;
         for(Usuario usuario : dbUsuarios){
-            if(usuario.getcorreoElectronico().equals(userName))
+            if(usuario.getCorreoe().equals(userName))
                 usuarioEncontrado = usuario;
         }
         return usuarioEncontrado;            
@@ -42,6 +36,7 @@ public class Usuarios {
             acceso = true;
         }
         return acceso;
+
     }
     
     

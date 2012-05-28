@@ -12,14 +12,6 @@ import static org.junit.Assert.*;
 
 public class CuentaTest {
     
-       AdmCliente admCuenta = new AdmCliente();
-       
-    @Test
-    
-    public void siNoIngresoCorreoElectronicoMeDebeDarError(){
-        assertFalse(admCuenta.verificarCorreo(null));
-        System.out.println("Debe ingresar correo electronico");
-    }  
-    
+
     
 }

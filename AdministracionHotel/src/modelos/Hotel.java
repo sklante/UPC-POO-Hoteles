@@ -33,6 +33,14 @@ public class Hotel {
         this.nombre = nombre;
     }
 
+    public boolean verificaNombreHotel(String nombreh){
+        boolean valido = false;
+       // this.password = null;
+        if(nombreh != null){
+            valido = true;
+        }
+        return valido;
+    }
     
 
 }

@@ -10,11 +10,9 @@ public class HotelTest {
 
 
     @Test
-    public void debeVerificarSiNoIngresoNombre() {
-        Hotel hotel = new Hotel("", "http://hotelrivera.clerk.im", "Alberto Fernandez");
-        assertNotNull(hotel.getNombre());
-        
-
+    public void validarQueseIngreseNombreDeHotel(){
+        Hotel hotel = new Hotel("Horel rivera", "http://hotelrivera.clerk.im", "Alberto Fernandez");
+        assertFalse(hotel.verificaNombreHotel(null));
+        System.out.println("Debe Ingresar nombre de hotel");
     }
-
 }
