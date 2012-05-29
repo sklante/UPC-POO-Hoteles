@@ -1,29 +1,23 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controladoras;
 
 import java.util.ArrayList;
 import modelos.Hotel;
 
-/**
- *
- * @author Angel
- */
+
 public class Hoteles {
 
-    private ArrayList<Hotel> dbHoteles = new ArrayList<Hotel>();
+    private ArrayList<Hotel> datosHoteles = new ArrayList<Hotel>();
 
     private void simularTabla() {
-        this.dbHoteles.add(new Hotel("Los Perdidos","losperdidos.clerk.lm"));
-        this.dbHoteles.add(new Hotel("Hotel TDG","tdg.clerk.lm"));
-        this.dbHoteles.add(new Hotel("Hotel SMA","sma.clerk.lm"));
-        this.dbHoteles.add(new Hotel("Hotel AAA","aaa.clerk.lm"));
+        this.datosHoteles.add(new Hotel("Los Perdidos", "http://hotelrivera.clerk.im", "Alberto Fernandez"));
+        this.datosHoteles.add(new Hotel("Hotel TDG", "http://hotelTDG.clerk.im", "Alfredo Fernandez"));
+        this.datosHoteles.add(new Hotel("Hotel SMA", "http://hotelSMA.clerk.im", "Jorge Fernandez"));
+        this.datosHoteles.add(new Hotel("Hotel AAA","http://hotelAAA.clerk.im", "Matias Fernandez"));
 
     }
 
-    public boolean verificarHotel(String nombreHotel) {
+    public boolean verificarSiExisteHoteles(String nombreHotel) {
         if (nombreHotel != null) {
             return true;
         }
@@ -33,22 +27,12 @@ public class Hoteles {
     public Hotel existeHotel(String nombreHotel) {
         simularTabla();
         Hotel hotelEncontrado = null;
-        for (Hotel hotel : dbHoteles) {
-            if (hotel.getNombreHotel().equals(nombreHotel)) {
+        for (Hotel hotel : datosHoteles) {
+            if (hotel.getNombre().equals(nombreHotel)) {
                 hotelEncontrado = hotel;
             }
         }
         return hotelEncontrado;
-    }
-    
-    public boolean validarHotel(String nombreHotel, String direccionClerk){
-        boolean acceso = false;
-        
-        Hotel hotelValido = existeHotel(nombreHotel);
-        if(hotelValido.getNombreHotel().equals(nombreHotel)){
-            acceso = true;
-        }
-        return acceso;
     }
   
 }
