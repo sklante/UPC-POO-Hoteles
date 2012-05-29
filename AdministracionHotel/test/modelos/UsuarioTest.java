@@ -25,7 +25,7 @@ public class UsuarioTest {
     @Test
     public void validarQueSeIngreseLasDosContrasenas(){
         Usuario contrasena1 = new Usuario("alfred@hotmaol.com", "123456");
-        Usuario contrasena2 = new Usuario("alfred@hotmaol.com", "123566");
+        Usuario contrasena2 = new Usuario("alfred@hotmaol.com", "123456");
         Assert.assertFalse(contrasena1.validaContrasena(null));
         Assert.assertFalse(contrasena2.validaContrasena(null));
         System.out.println("Debe ingresar contraseña");
@@ -34,8 +34,8 @@ public class UsuarioTest {
     @Test
     public void validarQueLasDosContrasenasNoCoincidan(){
         boolean valor = false;
-        Usuario contrasena1 = new Usuario("alfred@hotmaol.com", "123456");
-        Usuario contrasena2 = new Usuario("alfred@hotmaol.com", "12342556");
+        Usuario contrasena1 = new Usuario("alfred@hotmaol.com", "123656");
+        Usuario contrasena2 = new Usuario("alfred@hotmaol.com", "123456");
         valor = contrasena1.validaSiCoinciden(contrasena1.getPassword(),contrasena2.getPassword());
         Assert.assertFalse(valor);
         System.out.println("Las contraseñas no coincidem");

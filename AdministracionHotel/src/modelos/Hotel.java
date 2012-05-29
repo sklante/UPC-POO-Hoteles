@@ -5,17 +5,19 @@ package modelos;
 public class Hotel {
     private String nombre;
     private String direccionClerk;
-    private Usuario usuario;
+    private Usuario codigoUsuario;
 
-    public Hotel(String nombre, String direccionClerk, String usuario) {
+    public Hotel(String nombre, String direccionClerk, String codigoUsuario) {
         this.nombre = nombre;
         this.direccionClerk = direccionClerk;
-        this.usuario = new Usuario(usuario);
+        this.codigoUsuario = new Usuario(codigoUsuario);
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getCodigoUsuario() {
+        return codigoUsuario;
     }
+
+
 
     public String getDireccion() {
         return direccionClerk;

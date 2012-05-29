@@ -2,7 +2,7 @@
 package controladoras;
 
 import java.util.ArrayList;
-import modelos.Cliente;
+import modelos.Usuario;
 import modelos.Usuario;
 
 
@@ -11,10 +11,10 @@ public class Usuarios {
     private ArrayList<Usuario> dbUsuarios = new ArrayList<Usuario>();
     
     private void simularTabla(){
-        this.dbUsuarios.add(new Cliente("001", "Miguel ", "Angel", "sklante_1@hotmail.com", "123456"));       
-        this.dbUsuarios.add(new Cliente("002", "Alfredo ", "Luyo", "alfredoluy@hotmail.com", "alfred123"));
-        this.dbUsuarios.add(new Cliente("003", "Jose", "Rabanal", "josrab@hotmail.com", "josrab333"));
-        this.dbUsuarios.add(new Cliente("004", "Gonzalo", "Gutierrez", "gongut@hotmail.com", "gongut444"));
+        this.dbUsuarios.add(new Usuario("001", "Miguel ", "Angel", "sklante_1@hotmail.com", "123456"));
+        this.dbUsuarios.add(new Usuario("002", "Alfredo ", "Luyo", "alfredoluy@hotmail.com", "alfred123"));
+        this.dbUsuarios.add(new Usuario("003", "Jose", "Rabanal", "josrab@hotmail.com", "josrab333"));
+        this.dbUsuarios.add(new Usuario("004", "Gonzalo", "Gutierrez", "gongut@hotmail.com", "gongut444"));
         
     }
     

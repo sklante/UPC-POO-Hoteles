@@ -1,19 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package login;
 
-/**
- *
- * @author CARLOS
- */
+package login;
+import java.util.Scanner;
+
 public class Login {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        System.out.println("Iformacion Personal");
+
+        System.out.println("Correo electronico");
+
+
+
     }
 }
