@@ -107,8 +107,21 @@ public boolean verificaNombreHotel(String nombreh){
         return nomPro;
     }
 
-    
-    
+    public String[] sugerirNombres(String nombreHotel){
+        boolean sugerir = false;
+        String nombres[] = new String[5];
+        for(int i=0; i < nombres.length; i++){
+            nombres[i] = nombreHotel + (i+1);
+        }
+        return nombres;
+    }
+
+    public String asignarLink(String nombreHotel){
+        String link;
+        link = "La dirección Web es http://" + nombreHotel + ".clerk.im";
+
+        return link;
+    }
     
     
 }

@@ -6,6 +6,7 @@ package Objetos;
 
 import Modelos.TipoCliente;
 import Modelos.Cliente;
+import junit.framework.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -42,23 +43,26 @@ public class ClienteTest {
         assertNotNull(cliente.toString());
     }
     
+
     @Test
-    public void QueSePuedaAgregarLosDemasAtributos() {
-        Cliente cliente = new Cliente("Jorge", "Chavez");
-        assertNotNull(cliente.toString());
-        cliente.setCorreoElectronico("jchavez@hotmail.com");
-        assertEquals(cliente.getCorreoElectronico(),"jchavez@hotmail.com");
-        cliente.setTel("jchavez@hotmail.com");
-        assertEquals(cliente.getTel(),"jchavez@hotmail.com");
-        cliente.setFax("562-2323 Anexo 32");
-        assertEquals(cliente.getFax(),"562-2323 Anexo 32");
+    public void validarQueSeIngreseLasDosContrasenas(){
+        String contras1 = null;
+        String contras2 = null;
+        Cliente contrasena = new Cliente("01","alfred@hotmail.com", "123456", "123456","A");
+        Assert.assertFalse(contrasena.validaContrasena(contras1));
+        Assert.assertFalse(contrasena.validaContrasena(contras2));
+        System.out.println("Debe ingresar contraseña");
     }
 
     @Test
-    public void QueElToStringSeaNombreYApellido() {
-        Cliente cliente = new Cliente("Jorge", "Chavez");
-        assertEquals(cliente.toString(),"Jorge Chavez");
+    public void validarQueLasDosContrasenasNoCoincidan(){
+        String contras1 = "123456";
+        String contras2 = "123450";
+        boolean valor = false;
+        Cliente contrasena = new Cliente("01","alfred@hotmail.com","123456", "123456","A");
+        valor = contrasena.validaSiCoinciden(contras1, contras2);
+        Assert.assertFalse(valor);
+        System.out.println("Las contraseñas no coincidem");
     }
-
    
 }
