@@ -1,16 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controladoras;
 import controladoras.Hoteles;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Angel
- */
 public class HotelesTest {
      Hoteles Hoteles = new Hoteles();
      
@@ -25,6 +18,40 @@ public class HotelesTest {
       
         assertTrue(Hoteles.validarHotel("Los Perdidos","losperdidos.clerk.lm"));
                 System.out.println("nombre del hotel correcto");
-    }     
-        
+    }         
+  
+       
+       
+       
+       
+         @Test
+    public void siNoIngresoElNumerodeHabitacionesoMeDebeDarError(){
+        assertFalse(Hoteles.verificarNumeroDeHabitaciones(null));
+        System.out.println("Ingresar numero de habitaciones");
+    }  
+            
+    
+    @Test
+    public void siElNumerodeHabitacionesNoExisteMedebeDarError(){
+        assertNull(Hoteles.existeNumeroDeHabitaciones("10"));
+        System.out.println("debe ingresar un numero de habitaciones Valido");
+    }
+     
+       
+       
+       
+       
+       
+       
+       
+       
+         @Test
+    public void siIElnumerodeHabitacionEsIncorrectoMeDebeDarError (){
+      
+        assertTrue(Hoteles.validarHotel("Los Perdidos","losperdidos.clerk.lm"));
+                System.out.println("nombre del hotel correcto");
+    }       
+       
+       
+       
 }
