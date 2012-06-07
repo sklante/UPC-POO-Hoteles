@@ -8,6 +8,17 @@ public class Moneda implements InterfaceGeneral {
     private boolean errorInt;
     private boolean errorObject;
 
+    public Moneda(String simbolo, int conversion, boolean predeterminada, boolean errorInt, boolean errorObject) {
+        this.simbolo = simbolo;
+        this.conversion = conversion;
+        this.predeterminada = predeterminada;
+        this.errorInt = errorInt;
+        this.errorObject = errorObject;
+    }
+
+    
+
+
     public int getConversion() {
         return conversion;
     }
