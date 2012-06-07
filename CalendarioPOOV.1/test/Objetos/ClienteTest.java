@@ -1,18 +1,14 @@
-/*
- * To change this template, choose Tools | Templates and open the template in
- * the editor.
- */
+
 package Objetos;
 
+import junit.framework.Assert;
+import modelos.Cliente;
 import modelos.Pasajero;
 import modelos.TipoPasajero;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Pc
- */
+
 public class ClienteTest {
     
     public ClienteTest() {
@@ -59,6 +55,42 @@ public class ClienteTest {
         Pasajero cliente = new Pasajero("Jorge", "Chavez");
         assertEquals(cliente.toString(),"Jorge Chavez");
     }
+     //Test de aceptacion Configure su Cuenta
+        @Test
+    public void validarQueseIngreseCorreoElectronico(){
+        Cliente cliente = new Cliente("01","alfred@hotmail.com", "123456", "A");
+        assertFalse(cliente.verificaCorreo(null));
+        System.out.println("Debe Ingresar Correo Electronico");
+    }
+    //Test de aceptacion Configure su Cuenta
 
+    @Test
+    public void siElCorreoElectronicoEsIncorrectoDebeMandarMensaje(){
+        Cliente cliente = new Cliente("01","alfredhotmail.com", "123456", "A");
+        assertFalse(cliente.validarCorreo(cliente.getCorreoElectronico()));
+        System.out.println("Este correo electronico es incorrecto");
+    }
+
+    //Test de aceptacion Configure su Cuenta
+    @Test
+    public void validarQueSeIngreseLasDosContrasenas(){
+        String contras1 = null;
+        String contras2 = null;
+        Cliente contrasena = new Cliente("01","alfred@hotmail.com", "123456", "A");
+        Assert.assertFalse(contrasena.validaContrasena(contras1));
+        Assert.assertFalse(contrasena.validaContrasena(contras2));
+        System.out.println("Debe ingresar contraseña");
+    }
+    //Test de aceptacion Configure su Cuenta
+    @Test
+    public void validarQueLasDosContrasenasNoCoincidan(){
+        String contras1 = "123456";
+        String contras2 = "123450";
+        boolean valor = false;
+        Cliente contrasena = new Cliente("01","alfred@hotmail.com","123456", "A");
+        valor = contrasena.validaSiCoinciden(contras1, contras2);
+        Assert.assertFalse(valor);
+        System.out.println("Las contraseñas no coincidem");
+    }
    
 }
