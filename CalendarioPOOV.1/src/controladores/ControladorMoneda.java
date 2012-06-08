@@ -13,7 +13,7 @@ public class ControladorMoneda {
         this.dataMoneda.add(new Moneda( "S/.", 12, true, true, true));
         this.dataMoneda.add(new Moneda( "$/.", 12, true, true, true));
         this.dataMoneda.add(new Moneda( "€/.", 12, true, true, true));
-        this.dataMoneda.add(new Moneda( "Y.", 12, true, true, true));
+        //this.dataMoneda.add(new Moneda( "Y.", 12, true, true, true));
     }
 
     public boolean verificaTresMonedas(){

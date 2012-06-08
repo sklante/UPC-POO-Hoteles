@@ -3,7 +3,7 @@
 package modelos;
 
 
-public class Cliente {
+public class Cliente implements InterfaceGeneral{
     
     private static int id=1;
     private int idCliente;
@@ -68,34 +68,7 @@ public class Cliente {
         this.estado=estado;
     }
     
-    public boolean verificaCorreo(String correoe){
-        if(correoe != null){
-            return true;
-        }
-        return false;
-    }
-    
-    public boolean validaContrasena(String password){
-        boolean valido = false;
-       // this.password = null;
-        if(password != null){
-            valido = true;
-        }
-        return valido;
-
-    }
-    public boolean validaSiCoinciden(String password1, String password2){
-        boolean valido = false;
-
-       // this.password = null;
-        if(password1.equals(password2)){
-            valido = true;
-        }
-        return valido;
-
-    }
-    
-    public boolean validarCorreo(String correoe){
+/*   public boolean validarCorreo(String correoe){
         boolean valido = false;
         char acomparar='@';
 	int veces=0;
@@ -110,7 +83,7 @@ public class Cliente {
         }
         return valido;
 
-    }
+    }*/
 
     
     public void setTipoCliente(TipoCliente tipoCliente) {
@@ -171,6 +144,31 @@ public class Cliente {
     
     public String toString(){
         return this.nombre + " " + this.apellido;
+    }
+
+    @Override
+    public boolean isErrorInt() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean isErrorObject() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean validarIgualesObject(Object variable1, Object variable2) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean validarNulos(Object campo) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean validarNumerosValidos(int numero) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

@@ -13,6 +13,12 @@ public class ControladorCliente {
         }
     }
 
+    public boolean verificaCorreo(String correoe){
+        if(correoe != null){
+            return true;
+        }
+        return false;
+    }
     public static boolean validarCorreo(String correo) {
 
             int posicionArroba = correo.indexOf('@');
@@ -23,7 +29,27 @@ public class ControladorCliente {
                 return false;
             }
     }
-    
+
+        public boolean validaContrasena(String password){
+        boolean valido = false;
+       // this.password = null;
+        if(password != null){
+            valido = true;
+        }
+        return valido;
+
+    }
+    public boolean validaSiCoinciden(String password1, String password2){
+        boolean valido = false;
+
+       // this.password = null;
+        if(password1.equals(password2)){
+            valido = true;
+        }
+        return valido;
+
+    }
+
     public static boolean validarIguales(String variable1, String variable2){
         if (variable1.equals(variable2)) {
             return true;

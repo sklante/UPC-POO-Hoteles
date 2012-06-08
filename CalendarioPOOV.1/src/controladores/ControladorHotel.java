@@ -1,53 +1,13 @@
 
-package modelos;
+
+package controladores;
 
 import java.util.Scanner;
 
 
-public class Hotel implements InterfaceGeneral{
-    
-private String nombreHotel;
-private String direccionClerk;
-private String nombre;
-Scanner in = new Scanner(System.in);
-
-
-    public Hotel(String nombreHotel, String direccionClerk) {
-        this.nombreHotel = nombreHotel;
-        this.direccionClerk = direccionClerk;
-    }
-    
-    public Hotel(String nombreHotel, String direccionClerk, String nombre) {
-        this.nombreHotel = nombreHotel;
-        this.direccionClerk = direccionClerk;
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    public String getDireccionClerk() {
-        return direccionClerk;
-    }
-
-    public void setDireccionClerk(String direccionClerk) {
-        this.direccionClerk = direccionClerk;
-    }
-
-    public String getNombreHotel() {
-        return nombreHotel;
-    }
-
-    public void setNombreHotel(String nombreHotel) {
-        this.nombreHotel = nombreHotel;
-    }
-   
-public boolean verificaNombreHotel(String nombreh){
+public class ControladorHotel {
+    Scanner in = new Scanner(System.in);
+    public boolean verificaNombreHotel(String nombreh){
         boolean valido = false;
        // this.password = null;
         if(nombreh != null){
@@ -117,30 +77,4 @@ public boolean verificaNombreHotel(String nombreh){
         return link;
     }
 
-    @Override
-    public boolean isErrorInt() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public boolean isErrorObject() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public boolean validarIgualesObject(Object variable1, Object variable2) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public boolean validarNulos(Object campo) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public boolean validarNumerosValidos(int numero) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
-    
 }
