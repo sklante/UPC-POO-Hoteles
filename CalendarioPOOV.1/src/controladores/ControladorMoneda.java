@@ -16,17 +16,6 @@ public class ControladorMoneda {
         //this.dataMoneda.add(new Moneda( "Y.", 12, true, true, true));
     }
 
-    public boolean verificaTresMonedas(){
 
-        if(dataMoneda.size() < 4){
-
-            
-        return false;
-    }
-        else{
-            System.out.println("Solo se ingresa hasta 3 moneda por Tipo de habitación");
-            return true;
-        }
-    }
 
 }

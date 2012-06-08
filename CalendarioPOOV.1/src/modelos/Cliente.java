@@ -170,5 +170,41 @@ public class Cliente implements InterfaceGeneral{
     public boolean validarNumerosValidos(int numero) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
+    public boolean verificaCorreo(String correoe){
+        if(correoe != null){
+            return true;
+        }
+        return false;
+    }
+    public static boolean validarCorreo(String correo) {
+
+            int posicionArroba = correo.indexOf('@');
+            int posicionPunto = correo.indexOf('.');
+            if (posicionArroba > 0 && posicionPunto > posicionArroba+1 && posicionPunto < correo.length()) {
+                return true;
+            } else {
+                return false;
+            }
+    }
+
+        public boolean validaContrasena(String password){
+        boolean valido = false;
+       // this.password = null;
+        if(password != null){
+            valido = true;
+        }
+        return valido;
+
+    }
+    public boolean validaSiCoinciden(String password1, String password2){
+        boolean valido = false;
+
+       // this.password = null;
+        if(password1.equals(password2)){
+            valido = true;
+        }
+        return valido;
+
+    }
 }

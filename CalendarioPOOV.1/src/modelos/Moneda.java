@@ -3,12 +3,12 @@ package modelos;
 public class Moneda implements InterfaceGeneral {
 
     private String simbolo;
-    private int conversion;
+    private double conversion;
     private boolean predeterminada;
     private boolean errorInt;
     private boolean errorObject;
 
-    public Moneda(String simbolo, int conversion, boolean predeterminada, boolean errorInt, boolean errorObject) {
+    public Moneda(String simbolo, double conversion, boolean predeterminada, boolean errorInt, boolean errorObject) {
         this.simbolo = simbolo;
         this.conversion = conversion;
         this.predeterminada = predeterminada;
@@ -16,14 +16,20 @@ public class Moneda implements InterfaceGeneral {
         this.errorObject = errorObject;
     }
 
+    public Moneda(String simbolo, double conversion, boolean predeterminada){
+        this.simbolo = simbolo;
+        this.conversion = conversion;
+        this.predeterminada = predeterminada;
+
+    }
     
 
 
-    public int getConversion() {
+    public double getConversion() {
         return conversion;
     }
 
-    public void setConversion(int conversion) {
+    public void setConversion(double conversion) {
         this.conversion = conversion;
     }
 
@@ -85,5 +91,17 @@ public class Moneda implements InterfaceGeneral {
             return false;
         }
         return true;
+    }
+        public boolean verificaTresMonedas(int tamano){
+
+        if(tamano < 4){
+
+
+        return false;
+    }
+        else{
+            System.out.println("Solo se ingresa hasta 3 moneda por Tipo de habitación");
+            return true;
+        }
     }
 }

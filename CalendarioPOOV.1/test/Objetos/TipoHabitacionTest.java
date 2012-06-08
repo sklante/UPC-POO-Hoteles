@@ -32,14 +32,46 @@ public class TipoHabitacionTest {
 
     @Test
     public void soloPuedeIngresarTresMonedas(){
+        int tamano;
         ControladorMoneda controladormoneda = new ControladorMoneda();
+        Moneda moneda = new Moneda("S/.", 0.0, true);
 
         controladormoneda.variasMonedas();
-        
-        assertFalse(controladormoneda.verificaTresMonedas());
-        //assertEquals(3, con);
+        tamano = controladormoneda.dataMoneda.size();
+        assertFalse(moneda.verificaTresMonedas(tamano));
+       
+    }
+  //PENDIENTE
+    @Test
+    public void ingresarPrecioEnMonedas(){
+        double TipoCambio = 0.0;
+        TipoHabitacion thabitacion = new TipoHabitacion("Single", 250.00);
+
+        Moneda moneda = new Moneda("S/.", 12, true);
 
 
     }
+    //por revisar
+        @Test
+    public void debeRegistrarPrecioPorTipoHabitacion(){
+
+        String tipoh  = "Single";
+        double preciop = 500.0;
+        String moneda = "S/.";
+
+        ControladorTipoHabitacion admin = new ControladorTipoHabitacion(tipoh, preciop);
+        assertTrue(admin.verificaPrecio(preciop));
+
+        System.out.println("Usted debe ingresar un precio valido");
+        admin.registrarPrecioHabitacion(tipoh, preciop, moneda);
+
+        TipoHabitacion tipo = admin.buscar(codigo);
+        // Assert
+        assertNotNull(tipo);
+        assertEquals(codigo, tipo.getCodigo());
+        assertEquals(descripcion, tipo.getDescripcion());
+        assertEquals(precio, tipo.getPrecio(), 0.0);
+    }
+
 
 }

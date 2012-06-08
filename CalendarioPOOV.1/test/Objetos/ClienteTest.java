@@ -60,8 +60,8 @@ public class ClienteTest {
         @Test
     public void validarQueseIngreseCorreoElectronico(){
         Cliente cliente = new Cliente("01","alfred@hotmail.com", "123456", "A");
-        ControladorCliente controladorcliente = new ControladorCliente();
-        assertFalse(controladorcliente.verificaCorreo(null));
+        //ControladorCliente controladorcliente = new ControladorCliente();
+        assertFalse(cliente.verificaCorreo(null));
         System.out.println("Debe Ingresar Correo Electronico");
     }
     //Test de aceptacion Configure su Cuenta
@@ -69,9 +69,8 @@ public class ClienteTest {
     @Test
     public void siElCorreoElectronicoEsIncorrectoDebeMandarMensaje2(){
         Cliente cliente = new Cliente("01","alfredhotmail.com", "123456", "A");
-        ControladorCliente controladorcliente = new ControladorCliente();
-
-        assertFalse(controladorcliente.validarCorreo(cliente.getCorreoElectronico()));
+        
+        assertFalse(cliente.validarCorreo(cliente.getCorreoElectronico()));
         System.out.println("Este correo electronico es incorrecto");
     }
 
@@ -81,9 +80,9 @@ public class ClienteTest {
         String contras1 = null;
         String contras2 = null;
         Cliente contrasena = new Cliente("01","alfred@hotmail.com", "123456", "A");
-        ControladorCliente controladorcliente = new ControladorCliente();
-        Assert.assertFalse(controladorcliente.validaContrasena(contras1));
-        Assert.assertFalse(controladorcliente.validaContrasena(contras2));
+        
+        Assert.assertFalse(contrasena.validaContrasena(contras1));
+        Assert.assertFalse(contrasena.validaContrasena(contras2));
         System.out.println("Debe ingresar contraseña");
     }
     //Test de aceptacion Configure su Cuenta
@@ -93,8 +92,8 @@ public class ClienteTest {
         String contras2 = "123450";
         boolean valor = false;
         Cliente contrasena = new Cliente("01","alfred@hotmail.com","123456", "A");
-        ControladorCliente controladorcliente = new ControladorCliente();
-        valor = controladorcliente.validaSiCoinciden(contras1, contras2);
+        
+        valor = contrasena.validaSiCoinciden(contras1, contras2);
         Assert.assertFalse(valor);
         System.out.println("Las contraseñas no coincidem");
     }
