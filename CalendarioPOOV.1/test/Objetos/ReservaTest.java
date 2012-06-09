@@ -95,8 +95,25 @@ public class ReservaTest {
     }
 
     //Test de Aceptacion de Historia CONFIRMACION
+    //Verifica que el estado sea CONFIRMADO,check-in  sea falso y la fecha sea mayor que la actual
+    //si es asi, lo convierte el estado automaticamente a CANCELADO AUTOMATICO
+    @Test
+    public void validarAutomaticoSiNoConfirmaReserva(){
+        String confirma = "CONFIRMADO";
+        String validado = " ";
+       
+        Pasajero pasajero = new Pasajero("Alfredo", "Luyo");
+        TipoHabitacion tipoHabitacion = new TipoHabitacion("SINGLE", 150.00);
+        Habitacion habitacion = new Habitacion(101, tipoHabitacion);
 
-    //@Test
-    //public void
+        EstadoReserva estadoReserva = new EstadoReserva(confirma);
+
+        Reserva reserva = new Reserva(pasajero, habitacion, 8, 6, 2012, estadoReserva.getEstado(), false);
+
+        validado = reserva.validaAutomaticoFecha(9, 6, 2012, estadoReserva.getEstado(), false);
+
+        Assert.assertEquals(confirma, validado);
+        System.out.println("Confirmación sigue vigente");
+    }
 
 }

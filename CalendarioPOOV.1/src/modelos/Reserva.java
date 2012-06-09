@@ -1,6 +1,8 @@
 
 package modelos;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -14,6 +16,7 @@ public class Reserva implements InterfaceGeneral{
     private int mes;
     private int anio;
     private EstadoReserva estado;
+    private boolean check;
     private boolean errorInt;
     private boolean errorObject;
     //private Fecha fecha;
@@ -39,6 +42,29 @@ public class Reserva implements InterfaceGeneral{
         this.estado = new EstadoReserva(estadoReserva);
         id++;
     }
+
+    public Reserva(Pasajero cliente, Habitacion habitacion, int dia, int mes, int anio,
+            String estadoReserva, boolean check){
+        this.cliente=cliente;
+        this.habitacion=habitacion;
+        this.dia=dia;
+        this.mes=mes;
+        this.anio=anio;
+        this.idReserva=id;
+        this.estado = new EstadoReserva(estadoReserva);
+        this.check = check;
+        id++;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
+
 
     public Fecha getFecha() {
         return new Fecha(this.dia, this.mes, this.anio);
@@ -158,5 +184,45 @@ public class Reserva implements InterfaceGeneral{
         }
         return confirmado;
     }
-    
+
+    public String validaAutomaticoFecha(int dia, int mes, int anho, String estado, boolean check){
+        String validado = "";
+        String diaConfirmado, mesConfirmado = " ";
+        if(dia > 9){
+            diaConfirmado = Integer.toString(dia);
+        }else{
+            diaConfirmado = "0" + Integer.toString(dia);
+        }
+        if(mes > 9){
+            mesConfirmado = Integer.toString(mes);
+        }else{
+            mesConfirmado = "0" + Integer.toString(mes);
+        }
+
+        String anhoConfirmado = Integer.toString(anho);
+        String fechaConfirmada = anhoConfirmado + mesConfirmado + diaConfirmado;
+
+        int fconfirmada = Integer.parseInt(fechaConfirmada);
+
+        Date fechaActual = new Date();
+        SimpleDateFormat formatoAnho = new SimpleDateFormat("yyyy");
+        String fechaAnho = formatoAnho.format(fechaActual);
+        SimpleDateFormat formatoMes = new SimpleDateFormat("MM");
+        String fechaMes = formatoMes.format(fechaActual);
+        SimpleDateFormat formatoDia = new SimpleDateFormat("dd");
+        String fechaDia = formatoDia.format(fechaActual);
+
+        String fechaSistema = fechaAnho+fechaMes+fechaDia;
+        int fsistema = Integer.parseInt(fechaSistema);
+
+        if(fconfirmada > fsistema && check == false){
+            validado = "CANCELADO AUTOMATICO";
+        }else{
+            validado = estado;
+        }
+
+        return validado;
+    }
+
+
 }
