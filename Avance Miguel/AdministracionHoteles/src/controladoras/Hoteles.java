@@ -57,14 +57,14 @@ public class Hoteles {
         return acceso;
     }
   
-    /*
-   
-     public Hotel existeNumeroDeHabitaciones(int numeroDeHabitaciones) {
+
+   /*
+     public Habitacion existeNumeroDeHabitaciones(String numeroDeHabitaciones) {
          
          
         simularTabla();
-        Hotel hotelEncontrado = null;
-        for (Hotel hotel : dbHoteles) {
+        Habitacion HabitacionEncontrado = null;
+        
             
             assertEquals(3, cliente.getHabitaciones().size());
             
@@ -76,8 +76,8 @@ public class Hoteles {
         }
         return hotelEncontrado;
     }
-    */
+   
   
-     
+     */
     
 }
