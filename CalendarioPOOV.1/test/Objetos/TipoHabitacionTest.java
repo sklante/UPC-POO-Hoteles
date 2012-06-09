@@ -20,7 +20,7 @@ public class TipoHabitacionTest {
         String result = tipoHabitacion.getTipo();
         assertEquals(expResult, result);
     }
-
+    //Test de aceptacion Definir PRECIO
     @Test
     public void debeIngresarUnPrecioValido(){
         double price = 0.0;
@@ -29,7 +29,7 @@ public class TipoHabitacionTest {
         System.out.println("Usted debe ingresar un precio valido");
 
     }
-
+    //Test de aceptacion Definir PRECIO
     @Test
     public void soloPuedeIngresarTresMonedas(){
         int tamano;
@@ -52,7 +52,7 @@ public class TipoHabitacionTest {
 
     }
     //por revisar
-        @Test
+   /*     @Test
     public void debeRegistrarPrecioPorTipoHabitacion(){
 
         String tipoh  = "Single";
@@ -71,7 +71,7 @@ public class TipoHabitacionTest {
         assertEquals(codigo, tipo.getCodigo());
         assertEquals(descripcion, tipo.getDescripcion());
         assertEquals(precio, tipo.getPrecio(), 0.0);
-    }
+    }*/
 
 
 }

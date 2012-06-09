@@ -4,6 +4,8 @@
  */
 package Objetos;
 
+import junit.framework.Assert;
+import modelos.EstadoReserva;
 import modelos.Pasajero;
 import modelos.Habitacion;
 import modelos.TipoHabitacion;
@@ -65,4 +67,36 @@ public class ReservaTest {
         assertNotNull(reserva3.getCliente());
 
     }
+
+    //Test de Aceptacion de Historia CONFIRMACION
+
+    @Test
+    public void confirmarReservaHastaQueCheckIn() {
+
+        String confirma = "NO CONFIRMADO";
+        String verifica = "CONFIRMADO";
+        String resultado = " ";
+        Pasajero pasajero = new Pasajero("Alfredo", "Luyo");
+        TipoHabitacion tipoHabitacion = new TipoHabitacion("SINGLE", 150.00);
+        Habitacion habitacion = new Habitacion(101, tipoHabitacion);
+        
+        EstadoReserva estadoReserva = new EstadoReserva(confirma);
+
+        Reserva reserva = new Reserva(pasajero, habitacion, 8, 6, 2012, estadoReserva.getEstado());
+
+        resultado = reserva.confirmarReserva(estadoReserva.getEstado());
+
+        Assert.assertEquals(verifica, resultado);
+
+        /*System.out.println(reserva.getCliente());
+        System.out.println(reserva.getHabitacion());
+        System.out.println(habitacion.getTipoHabitacion());
+        System.out.println(estadoReserva.getEstado());*/
+    }
+
+    //Test de Aceptacion de Historia CONFIRMACION
+
+    //@Test
+    //public void
+
 }

@@ -147,5 +147,16 @@ public class Reserva implements InterfaceGeneral{
         }
         return true;
     }
+
+    public String confirmarReserva(String confirma){
+        String confirmado = " ";
+        if(confirma.equals("NO CONFIRMADO")){
+            confirmado = "CONFIRMADO";
+        }else{
+            System.out.println("La reserva ya esta confirmada");
+            confirmado = confirma;
+        }
+        return confirmado;
+    }
     
 }
