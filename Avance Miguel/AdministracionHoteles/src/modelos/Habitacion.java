@@ -11,11 +11,12 @@ package modelos;
 public class Habitacion {
  
      private String nombreHabitacion;
-     private String tipoHabitacion;
-     public  Hotel Hotel;
+     private TipoHabitacion tipoHabitacion;
+     private  Hotel Hotel;
+    
      
 
-    public Habitacion(String nombreHabitacion, String tipoHabitacion,Hotel hotel) {
+    public Habitacion(String nombreHabitacion, TipoHabitacion tipoHabitacion,Hotel hotel) {
       
         this.nombreHabitacion = nombreHabitacion;
         this.tipoHabitacion = tipoHabitacion;
@@ -41,12 +42,8 @@ public class Habitacion {
         this.nombreHabitacion = nombreHabitacion;
     }
 
-    public String getTipoHabitacion() {
+    public TipoHabitacion getTipoHabitacion() {
         return tipoHabitacion;
     }
 
-    public void setTipoHabitacion(String tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
-    }
-     
 }

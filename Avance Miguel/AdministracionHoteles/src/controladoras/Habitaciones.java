@@ -17,9 +17,9 @@ public class Habitaciones {
  
     private void simularTabla(){
         
-        this.dbHabitaciones.add(new Habitacion( "A001", "single",null));       
-          this.dbHabitaciones.add(new Habitacion( "A002", "double",null));
-          this.dbHabitaciones.add(new Habitacion( "A003", "suite",null)); 
+        this.dbHabitaciones.add(new Habitacion( "A001", null,null));       
+          this.dbHabitaciones.add(new Habitacion( "A002", null,null));
+          this.dbHabitaciones.add(new Habitacion( "A003",null,null)); 
     
          
     }    

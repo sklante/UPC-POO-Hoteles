@@ -3,6 +3,7 @@ package controladoras;
 import modelos.Cliente;
 import modelos.Hotel;
 import modelos.Habitacion;
+import modelos.TipoHabitacion;
 
 import java.util.ArrayList;
 
@@ -92,7 +93,7 @@ public class Clientes {
    
    
     
-    void registrarHabitacion(String nombreHabitacion, String tipoHabitacion, Hotel hotel) {
+    void registrarHabitacion(String nombreHabitacion, TipoHabitacion tipoHabitacion, Hotel hotel) {
 
         
         buscarHabitacion(nombreHabitacion);

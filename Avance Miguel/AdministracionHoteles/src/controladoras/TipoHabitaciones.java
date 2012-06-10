@@ -32,6 +32,15 @@ public class TipoHabitaciones {
     }
     
     
+     public boolean verificarPrecio(String precio) {
+        if (precio != null) {
+            return true;
+        }
+        return false;
+    }
+    
+    
+    
      void registrarPrecioHabitacion(String nombreTipo, double precio) {
 
         buscarTipoDeHabitacion(nombreTipo);
