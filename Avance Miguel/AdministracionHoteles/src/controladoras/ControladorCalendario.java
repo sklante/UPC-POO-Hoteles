@@ -54,18 +54,35 @@ public class ControladorCalendario {
         int c = 0;
         while (i < 30) {
             if (i < 10) {
-                TipoHabitacion tipoHabitacion = new TipoHabitacion("NORMAL", 50.00);
-                Habitacion habitacion = new Habitacion(301 + a, tipoHabitacion);
+                
+                            TipoHabitacion tipoHabitacion = new TipoHabitacion("NORMAL", 50.00, null);
+                
+              //  TipoHabitacion tipoHabitacion = new TipoHabitacion("NORMAL", 50.00);
+                            
+                              Habitacion habitacion = new Habitacion("301" + a, tipoHabitacion, null);
+                              
+                //Habitacion habitacion = new Habitacion(301 + a, tipoHabitacion);
                 listaHabitaciones.add(habitacion);
                 a++;
             } else if (i < 20) {
-                TipoHabitacion tipoHabitacion = new TipoHabitacion("DOBLE", 100.00);
-                Habitacion habitacion = new Habitacion(201 + b, tipoHabitacion);
+                
+                TipoHabitacion tipoHabitacion = new TipoHabitacion("DOUBLE", 100.00, null);
+                
+               // TipoHabitacion tipoHabitacion = new TipoHabitacion("DOBLE", 100.00);
+                  Habitacion habitacion = new Habitacion("" + b, tipoHabitacion, null);
+                
+                  //Habitacion habitacion = new Habitacion(201 + b, tipoHabitacion);
                 listaHabitaciones.add(habitacion);
                 b++;
             } else {
-                TipoHabitacion tipoHabitacion = new TipoHabitacion("PRESIDENCIAL", 200.00);
-                Habitacion habitacion = new Habitacion(101 + c, tipoHabitacion);
+                
+                 TipoHabitacion tipoHabitacion = new TipoHabitacion("PRESIDENCIAL", 200.00,null);
+               
+               //  TipoHabitacion tipoHabitacion = new TipoHabitacion("PRESIDENCIAL", 200.00);
+                
+                Habitacion habitacion = new Habitacion("101" + c, tipoHabitacion, null);
+                
+               // Habitacion habitacion = new Habitacion(101 + c, tipoHabitacion);
                 listaHabitaciones.add(habitacion);
                 c++;
             }
