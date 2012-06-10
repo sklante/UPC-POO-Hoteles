@@ -9,9 +9,12 @@ package modelos;
  * @author Angel
  */
 public class TipoHabitacion {
+
     private String nombreTipo;
     private double precio;
     private Moneda nombreMoneda;
+    private boolean errorInt;
+    private boolean errorObject;
 
     public TipoHabitacion(String nombreTipo, double precio, Moneda nombreMoneda) {
         this.nombreTipo = nombreTipo;
@@ -42,6 +45,10 @@ public class TipoHabitacion {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+    
+    
+
+    
     
     
 }
