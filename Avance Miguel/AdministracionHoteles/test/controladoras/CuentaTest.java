@@ -53,6 +53,6 @@ public class CuentaTest {
             assertEquals("Cliente ya registrado", ex.getMessage());
         }
 
-    }   
+    }     
    
 }

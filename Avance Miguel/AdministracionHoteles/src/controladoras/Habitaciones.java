@@ -31,6 +31,10 @@ public class Habitaciones {
         return false;
     }   
     
+    
+    
+    
+    
     public Habitacion existeHabitacion(String nombreHabitacion){
         simularTabla();
         Habitacion habitacionEncontrado = null;
@@ -42,9 +46,6 @@ public class Habitaciones {
     }
     
    
-    
-    
    
- 
     
 }

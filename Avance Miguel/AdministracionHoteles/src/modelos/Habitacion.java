@@ -13,6 +13,7 @@ public class Habitacion {
      private String nombreHabitacion;
      private String tipoHabitacion;
      public  Hotel Hotel;
+     
 
     public Habitacion(String nombreHabitacion, String tipoHabitacion,Hotel hotel) {
       

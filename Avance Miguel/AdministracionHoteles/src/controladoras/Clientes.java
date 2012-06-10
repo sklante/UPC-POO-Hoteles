@@ -7,13 +7,8 @@ import modelos.Habitacion;
 import java.util.ArrayList;
 
 public class Clientes {
-  private ArrayList<Habitacion> Habitaciones;
-  
-   
- 
-   
- 
-   
+
+     
     private ArrayList<Cliente> dbClientes = new ArrayList<Cliente>();
 
     private void simularTabla() {
@@ -78,14 +73,36 @@ public class Clientes {
           return  false;
                   
    }
+   
+     public boolean verificarNombreHabitacionyTipo(String nombreHabitacion, String tipoHabitacion) {
+         
+        if (nombreHabitacion == "" && tipoHabitacion == "") {
+                                
+             nombreHabitacion = "";
+           tipoHabitacion = "single";
+            
+            return true;
+        }else{
+            
+           return false;
+        }
+            
+       
+    }
+   
+   
     
     void registrarHabitacion(String nombreHabitacion, String tipoHabitacion, Hotel hotel) {
 
+        
         buscarHabitacion(nombreHabitacion);
 
         Habitacion habitacion = new Habitacion(nombreHabitacion, tipoHabitacion, hotel);
         habitaciones.add(habitacion);
     }
+    
+    
+    
 
     private void buscarHabitacion(String nombreHabitacion) throws RuntimeException {
         for (Habitacion habitacion : habitaciones) {
