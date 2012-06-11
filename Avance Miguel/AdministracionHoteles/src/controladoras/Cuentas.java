@@ -23,6 +23,7 @@ public class Cuentas{
          Cliente cliente = new Cliente(codigo,correoElectronico, contrasena);
         clientes.add(cliente);      
     }
+    
       private void buscarCliente (String codigo, String contrasena)throws RuntimeException{
           for (Cliente cliente: clientes){
           if (cliente.getCodigo().equals(codigo)) {       

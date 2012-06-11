@@ -11,7 +11,7 @@ public class ClienteTest {
     @Test
     public void siNoIngresoElCorreoElectronicoMeDebeDarError(){
         assertFalse(Clientes.verificarCorreoElectronico(null));
-        System.out.println("El correo Electronico no debe vacío");
+        System.out.println("El correo Electronico no debe estar vacío");
     }  
             
     @Test

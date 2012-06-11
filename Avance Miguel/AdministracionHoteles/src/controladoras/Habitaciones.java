@@ -11,24 +11,30 @@ import modelos.Hotel;
  * @author Angel
  */
 public class Habitaciones {
- private ArrayList<Habitacion> dbHabitaciones = new ArrayList<Habitacion>();
     
- 
+ private ArrayList<Habitacion> dbHabitaciones = new ArrayList<Habitacion>();
+
  
     private void simularTabla(){
-        this.dbHabitaciones.add(new Habitacion( "A001", "single",null));       
-          this.dbHabitaciones.add(new Habitacion( "A002", "double",null));
-          this.dbHabitaciones.add(new Habitacion( "A003", "suite",null)); 
-            this.dbHabitaciones.add(new Habitacion( "A004", "Departament",null));       
-          this.dbHabitaciones.add(new Habitacion( "A005", "Cabin",null));
+        
+        this.dbHabitaciones.add(new Habitacion( "A001", null,null));       
+          this.dbHabitaciones.add(new Habitacion( "A002", null,null));
+          this.dbHabitaciones.add(new Habitacion( "A003",null,null)); 
+    
          
     }    
-    public boolean verificarHabitaciono(String nombreHabitacion){
+    
+    public boolean verificarHabitacion(String nombreHabitacion){
         if(nombreHabitacion != null){
             return true;
         }
         return false;
-    }    
+    }   
+    
+    
+    
+    
+    
     public Habitacion existeHabitacion(String nombreHabitacion){
         simularTabla();
         Habitacion habitacionEncontrado = null;
@@ -39,6 +45,7 @@ public class Habitaciones {
         return habitacionEncontrado;            
     }
     
-       
+   
+   
     
 }
