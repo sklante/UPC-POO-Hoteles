@@ -116,4 +116,49 @@ public class ReservaTest {
         System.out.println("Confirmación sigue vigente");
     }
 
+    //Test de Aceptacion de Historia CHECK-IN
+    //Toma la reserva que esta confirmada
+
+    @Test
+    public void tomarReservaDeHabitacion(){
+        String confirma = "CONFIRMADO";
+        boolean checkInEnviado = true;
+
+        Pasajero pasajero = new Pasajero("Alfredo", "Luyo");
+        TipoHabitacion tipoHabitacion = new TipoHabitacion("SINGLE", 150.00);
+        Habitacion habitacion = new Habitacion(101, tipoHabitacion);
+
+        EstadoReserva estadoReserva = new EstadoReserva(confirma);
+
+        Reserva reserva = new Reserva(pasajero, habitacion, 8, 6, 2012, estadoReserva.getEstado(), false);
+
+        boolean checkInEsperado = reserva.realizaCheckInOut(reserva.isCheck());
+
+        Assert.assertEquals(checkInEnviado,checkInEsperado);
+        System.out.println("Se realizó el Check-In de la Reserva confirmada");
+    }
+    //Test de Aceptacion de Historia CHECK-IN
+    //Toma la reserva que esta confirmada
+
+    @Test
+    public void liberaReservaDeHabitacion(){
+        String confirma = "CONFIRMADO";
+        boolean checkInEsperado = false;
+        String reservaEsperada = "CANCELADO";
+
+        Pasajero pasajero = new Pasajero("Alfredo", "Luyo");
+        TipoHabitacion tipoHabitacion = new TipoHabitacion("SINGLE", 150.00);
+        Habitacion habitacion = new Habitacion(101, tipoHabitacion);
+
+        EstadoReserva estadoReserva = new EstadoReserva(confirma);
+
+        Reserva reserva = new Reserva(pasajero, habitacion, 8, 6, 2012, estadoReserva.getEstado(), true);
+
+        boolean checkInEnviado = reserva.realizaCheckInOut(reserva.isCheck());
+        String reservaEnviada = reserva.liberarReserva(estadoReserva.getEstado(), reserva.isCheck());
+
+        Assert.assertEquals(checkInEsperado,checkInEnviado);
+        Assert.assertEquals(reservaEsperada, reservaEnviada);
+        System.out.println("Se liberó el Check-Out");
+    }
 }

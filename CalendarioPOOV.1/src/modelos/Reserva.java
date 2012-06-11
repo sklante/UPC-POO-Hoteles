@@ -224,5 +224,26 @@ public class Reserva implements InterfaceGeneral{
         return validado;
     }
 
+    public boolean realizaCheckInOut(boolean check) {
+        boolean efectuaReserva;
+        if(check == false){
+            efectuaReserva = true;
+            System.out.println("Se tomó la Reserva");
+        } else{
+            efectuaReserva = false;
+            System.out.println("Se liberó la Reserva");
+        }
+        return efectuaReserva;
+    }
+
+    public String liberarReserva(String estado, boolean check) {
+        if(estado.equals("CONFIRMADO") && check == true){
+            estado = "CANCELADO";
+        }else{
+            System.out.println("Verifica estado y check In");
+        }
+        return estado;
+    }
+
 
 }

@@ -86,7 +86,7 @@ public class ControladorCliente {
     
     public static void main(String[] args) {
         System.out.println(opcionesUrlHotel("El Pueblo"));
-        System.out.println(validarCorreo("a@c.c"));
+        //System.out.println(validarCorreo("a@c.c"));
         System.out.println(validarIguales("a@c.c","a@c.c"));
         System.out.println(opcionesNombreHotel("    @ //Hotel,  El Pueblo...? "));
         
