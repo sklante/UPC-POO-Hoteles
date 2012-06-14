@@ -1,15 +1,21 @@
-
+/*
+ * To change this template, choose Tools | Templates and open the template in
+ * the editor.
+ */
 package Objetos;
 
 import controladores.ControladorCliente;
 import junit.framework.Assert;
 import modelos.Cliente;
-import modelos.Pasajero;
+import modelos.Persona;
 import modelos.TipoPasajero;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
+/**
+ *
+ * @author Pc
+ */
 public class ClienteTest {
     
     public ClienteTest() {
@@ -17,9 +23,9 @@ public class ClienteTest {
     
     @Test
     public void QueLosIdSeanCorrelativos() {
-        Pasajero cliente1 = new Pasajero("Jorge", "Chavez");
-        Pasajero cliente2 = new Pasajero("Miguel", "Grau");
-        Pasajero cliente3 = new Pasajero("Francisco", "Bolognesi");
+        Persona cliente1 = new Persona("Jorge", "Chavez");
+        Persona cliente2 = new Persona("Miguel", "Grau");
+        Persona cliente3 = new Persona("Francisco", "Bolognesi");
         assertEquals(cliente1.getIdCliente(), 1);
         assertEquals(cliente2.getIdCliente(), 2);
         assertEquals(cliente3.getIdCliente(), 3);
@@ -28,20 +34,20 @@ public class ClienteTest {
     @Test
     public void QueTodosTenganTipo() {
         TipoPasajero tipoCliente = new TipoPasajero("VIP");
-        Pasajero cliente = new Pasajero("Jorge", "Chavez", tipoCliente);
+        Persona cliente = new Persona("Jorge", "Chavez", tipoCliente);
         assertNotNull(cliente.getTipoCliente());
         assertEquals(cliente.getTipoCliente().getTipoCliente(), "VIP");
     } 
      
     @Test
     public void QueTodosTenganNombre() {
-        Pasajero cliente = new Pasajero("Jorge", "Chavez");
+        Persona cliente = new Persona("Jorge", "Chavez");
         assertNotNull(cliente.toString());
     }
     
     @Test
     public void QueSePuedaAgregarLosDemasAtributos() {
-        Pasajero cliente = new Pasajero("Jorge", "Chavez");
+        Persona cliente = new Persona("Jorge", "Chavez");
         assertNotNull(cliente.toString());
         cliente.setEmail("jchavez@hotmail.com");
         assertEquals(cliente.getEmail(),"jchavez@hotmail.com");
@@ -53,14 +59,13 @@ public class ClienteTest {
 
     @Test
     public void QueElToStringSeaNombreYApellido() {
-        Pasajero cliente = new Pasajero("Jorge", "Chavez");
+        Persona cliente = new Persona("Jorge", "Chavez");
         assertEquals(cliente.toString(),"Jorge Chavez");
     }
-     //Test de aceptacion Configure su Cuenta
+         //Test de aceptacion Configure su Cuenta
         @Test
     public void validarQueseIngreseCorreoElectronico(){
-        Cliente cliente = new Cliente("01","alfred@hotmail.com", "123456", "A");
-        //ControladorCliente controladorcliente = new ControladorCliente();
+        Cliente cliente = new Cliente("Alfredo","123456","alfred@hotmail.com", true);
         assertFalse(cliente.verificaCorreo(null));
         System.out.println("Debe Ingresar Correo Electronico");
     }
@@ -68,9 +73,9 @@ public class ClienteTest {
 
     @Test
     public void siElCorreoElectronicoEsIncorrectoDebeMandarMensaje2(){
-        Cliente cliente = new Cliente("01","alfredhotmail.com", "123456", "A");
-        
-        assertFalse(cliente.validarCorreo(cliente.getCorreoElectronico()));
+        Cliente cliente = new Cliente("Alfredo","123456","alfredhotmail.com", true);
+
+        assertFalse(ControladorCliente.esCorreo(cliente.getCorreoElectronico()));
         System.out.println("Este correo electronico es incorrecto");
     }
 
@@ -79,10 +84,10 @@ public class ClienteTest {
     public void validarQueSeIngreseLasDosContrasenas(){
         String contras1 = null;
         String contras2 = null;
-        Cliente contrasena = new Cliente("01","alfred@hotmail.com", "123456", "A");
-        
-        Assert.assertFalse(contrasena.validaContrasena(contras1));
-        Assert.assertFalse(contrasena.validaContrasena(contras2));
+        //Cliente contrasena = new Cliente("Alfredo","123456","alfred@hotmail.com", true);
+
+        Assert.assertFalse(ControladorCliente.validaContrasena(contras1));
+        Assert.assertFalse(ControladorCliente.validaContrasena(contras2));
         System.out.println("Debe ingresar contraseña");
     }
     //Test de aceptacion Configure su Cuenta
@@ -91,11 +96,12 @@ public class ClienteTest {
         String contras1 = "123456";
         String contras2 = "123450";
         boolean valor = false;
-        Cliente contrasena = new Cliente("01","alfred@hotmail.com","123456", "A");
-        
-        valor = contrasena.validaSiCoinciden(contras1, contras2);
+        //Cliente contrasena = new Cliente("01","alfred@hotmail.com","123456", "A");
+
+        valor = ControladorCliente.validarIguales(contras1, contras2);
         Assert.assertFalse(valor);
         System.out.println("Las contraseñas no coincidem");
     }
+
    
 }

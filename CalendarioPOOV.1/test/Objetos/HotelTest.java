@@ -1,44 +1,57 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 package Objetos;
 
-import modelos.Hotel;
+import controladores.ControladorCliente;
+import controladores.ControladorHotel;
+import java.util.ArrayList;
+import java.util.List;
 import junit.framework.Assert;
+import modelos.Hotel;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ *
+ * @author alfredol
+ */
 public class HotelTest {
 
-//Test de aceptacion Configure su Cuenta
+    //Test de aceptacion Configure su Cuenta
     @Test
     public void validarQueseIngreseNombreDeHotel(){
         String nameHotel = null;
-        Hotel hotel = new Hotel("Hotel rivera", "http://hotelrivera.clerk.im", "Alberto Fernandez");
+        Hotel hotel = new Hotel("Hotel rivera", "http://hotelrivera.clerk.im");
 
-        assertFalse(hotel.verificaNombreHotel(nameHotel));
+        assertFalse(ControladorHotel.verificaNombreHotel(nameHotel));
         System.out.println("Debe Ingresar nombre de hotel");
     }
- //Test de aceptacion Configure su Cuenta
+
+     //Test de aceptacion Configure su Cuenta
     @Test
     public void mostrarNombresSugeridos(){
         String nameHotel = "Rivera";
         String recibeNombres[] = new String[5];
-        Hotel hotel = new Hotel("Hotel rivera", "http://hotelrivera.clerk.im", "Alberto Fernandez");
-
-        recibeNombres = hotel.sugerirNombres(nameHotel);
+        //Hotel hotel = new Hotel("Hotel rivera", "http://hotelrivera.clerk.im", "Alberto Fernandez");
+        List<String> lista = new ArrayList<String>();
+        lista = ControladorCliente.opcionesNombreHotel(nameHotel);
         //recibeNombres = null; cuando no hay valores falla
-        Assert.assertNotNull(recibeNombres);
-        System.out.println("Se sugirió los nombres: ");
-        for(int i = 0; i < recibeNombres.length; i++){
-            System.out.println((i+1) + ".- " + recibeNombres[i]);
-        }
-        System.out.println("se seleccionó el nombre " + recibeNombres[2]);
-        String nombreWeb = hotel.asignarLink(recibeNombres[2]);
+        Assert.assertNotNull(lista);
+        System.out.println("Se sugirió los nombres: " + lista);
+
+        System.out.println("se seleccionó el nombre " + nameHotel);
+        String nombreWeb = ControladorCliente.asignarLink(nameHotel);
         Assert.assertNotNull(nombreWeb);
 
         System.out.println(nombreWeb);
 
     }
+
+
 
 }

@@ -4,7 +4,7 @@
  */
 package modelos;
 
-import controladores.Traductor;
+import controladores.MetodosGenerales;
 import java.util.Date;
 
 public class Mes implements InterfaceGeneral{
@@ -26,7 +26,7 @@ public class Mes implements InterfaceGeneral{
 
     @Override
     public String toString() {
-        return Traductor.traduccion(this.fecha.getMes(), true) + " \n" + this.fecha.getAnio();
+        return MetodosGenerales.traduccion(this.fecha.getMes(), true) + " \n" + this.fecha.getAnio();
     }
 
     @Override

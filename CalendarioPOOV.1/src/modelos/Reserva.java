@@ -1,8 +1,6 @@
 
 package modelos;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -10,7 +8,7 @@ public class Reserva implements InterfaceGeneral{
     
     private static int id=1;
     private int idReserva;
-    private Pasajero cliente;
+    private Persona cliente;
     private Habitacion habitacion;
     private int dia;
     private int mes;
@@ -21,7 +19,12 @@ public class Reserva implements InterfaceGeneral{
     private boolean errorObject;
     //private Fecha fecha;
     
-    public Reserva(Pasajero cliente, Habitacion habitacion, int dia, int mes, int anio){
+    public Reserva(Persona cliente, Habitacion habitacion, int dia, int mes, int anio){
+        if(cliente == null){
+            this.estado = new EstadoReserva("No Facturado");
+        }else{
+            this.estado = new EstadoReserva("Pendiente");
+        }
         this.cliente=cliente;
         this.habitacion=habitacion;
         this.dia=dia;
@@ -29,9 +32,10 @@ public class Reserva implements InterfaceGeneral{
         this.anio=anio;
         this.idReserva=id;
         id++;
+        
     }
     
-    public Reserva(Pasajero cliente, Habitacion habitacion, int dia, int mes, int anio,
+    public Reserva(Persona cliente, Habitacion habitacion, int dia, int mes, int anio,
             String estadoReserva){
         this.cliente=cliente;
         this.habitacion=habitacion;
@@ -42,8 +46,7 @@ public class Reserva implements InterfaceGeneral{
         this.estado = new EstadoReserva(estadoReserva);
         id++;
     }
-
-    public Reserva(Pasajero cliente, Habitacion habitacion, int dia, int mes, int anio,
+        public Reserva(Persona cliente, Habitacion habitacion, int dia, int mes, int anio,
             String estadoReserva, boolean check){
         this.cliente=cliente;
         this.habitacion=habitacion;
@@ -64,8 +67,6 @@ public class Reserva implements InterfaceGeneral{
         this.check = check;
     }
 
-
-
     public Fecha getFecha() {
         return new Fecha(this.dia, this.mes, this.anio);
     }
@@ -82,11 +83,11 @@ public class Reserva implements InterfaceGeneral{
         this.anio = anio;
     }
 
-    public Pasajero getCliente() {
+    public Persona getCliente() {
         return cliente;
     }
 
-    public void setCliente(Pasajero cliente) {
+    public void setCliente(Persona cliente) {
         this.cliente = cliente;
     }
 
@@ -115,7 +116,11 @@ public class Reserva implements InterfaceGeneral{
     }
     
     public String toString(){
-        return "Reservado";
+        if(this.cliente == null){
+            return "No confirmado";
+        }else{
+            return "Reservado";
+        }
     }
     
     public String toDetail(){
@@ -173,77 +178,5 @@ public class Reserva implements InterfaceGeneral{
         }
         return true;
     }
-
-    public String confirmarReserva(String confirma){
-        String confirmado = " ";
-        if(confirma.equals("NO CONFIRMADO")){
-            confirmado = "CONFIRMADO";
-        }else{
-            System.out.println("La reserva ya esta confirmada");
-            confirmado = confirma;
-        }
-        return confirmado;
-    }
-
-    public String validaAutomaticoFecha(int dia, int mes, int anho, String estado, boolean check){
-        String validado = "";
-        String diaConfirmado, mesConfirmado = " ";
-        if(dia > 9){
-            diaConfirmado = Integer.toString(dia);
-        }else{
-            diaConfirmado = "0" + Integer.toString(dia);
-        }
-        if(mes > 9){
-            mesConfirmado = Integer.toString(mes);
-        }else{
-            mesConfirmado = "0" + Integer.toString(mes);
-        }
-
-        String anhoConfirmado = Integer.toString(anho);
-        String fechaConfirmada = anhoConfirmado + mesConfirmado + diaConfirmado;
-
-        int fconfirmada = Integer.parseInt(fechaConfirmada);
-
-        Date fechaActual = new Date();
-        SimpleDateFormat formatoAnho = new SimpleDateFormat("yyyy");
-        String fechaAnho = formatoAnho.format(fechaActual);
-        SimpleDateFormat formatoMes = new SimpleDateFormat("MM");
-        String fechaMes = formatoMes.format(fechaActual);
-        SimpleDateFormat formatoDia = new SimpleDateFormat("dd");
-        String fechaDia = formatoDia.format(fechaActual);
-
-        String fechaSistema = fechaAnho+fechaMes+fechaDia;
-        int fsistema = Integer.parseInt(fechaSistema);
-
-        if(fconfirmada > fsistema && check == false){
-            validado = "CANCELADO AUTOMATICO";
-        }else{
-            validado = estado;
-        }
-
-        return validado;
-    }
-
-    public boolean realizaCheckInOut(boolean check) {
-        boolean efectuaReserva;
-        if(check == false){
-            efectuaReserva = true;
-            System.out.println("Se tomó la Reserva");
-        } else{
-            efectuaReserva = false;
-            System.out.println("Se liberó la Reserva");
-        }
-        return efectuaReserva;
-    }
-
-    public String liberarReserva(String estado, boolean check) {
-        if(estado.equals("CONFIRMADO") && check == true){
-            estado = "CANCELADO";
-        }else{
-            System.out.println("Verifica estado y check In");
-        }
-        return estado;
-    }
-
-
+    
 }

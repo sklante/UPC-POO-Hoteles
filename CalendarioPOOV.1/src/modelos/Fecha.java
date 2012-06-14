@@ -4,11 +4,12 @@
  */
 package modelos;
 
-import controladores.Traductor;
+import controladores.MetodosGenerales;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 
 public class Fecha implements InterfaceGeneral{
 
@@ -26,6 +27,12 @@ public class Fecha implements InterfaceGeneral{
         this.mesNumero = mesNumero;
         this.anio = anio;
         fechaCompleta();
+    }
+    
+    public Fecha(String formato){
+        if(fechaTieneFormato(formato)){
+            
+        }
     }
 
     public Fecha(Date date) {
@@ -93,19 +100,23 @@ public class Fecha implements InterfaceGeneral{
     }
 
     public String toFormatMonth(){
-        return Traductor.traduccion(this.mes, traductoActivado) + " \n" + this.anio;
+        return MetodosGenerales.traduccion(this.mes, traductoActivado) + " \n" + this.anio;
     }
     
     public String toFormatCal() {
-        return Traductor.traduccion(this.dia, traductoActivado) + " \n" + this.diaNumero;
+        return MetodosGenerales.traduccion(this.dia, traductoActivado) + " \n" + this.diaNumero;
+    }
+    
+    public String toFechaCompleta(){
+        return this.diaNumero + "/" + this.mesNumero + "/" + this.anio;
     }
 
     public String toComplet() {
-        return Traductor.traduccion(this.dia, traductoActivado) + " " + this.diaNumero + " de " + Traductor.traduccion(this.mes, traductoActivado) + " de " + this.anio;
+        return MetodosGenerales.traduccion(this.dia, traductoActivado) + " " + this.diaNumero + " de " + MetodosGenerales.traduccion(this.mes, traductoActivado) + " de " + this.anio;
     }
 
     public String toString() {
-        return Traductor.traduccion(this.dia, traductoActivado) + " " + this.diaNumero + " " + Traductor.traduccion(this.mes, traductoActivado);
+        return MetodosGenerales.traduccion(this.dia, traductoActivado) + " " + this.diaNumero + " " + MetodosGenerales.traduccion(this.mes, traductoActivado);
     }
 
     public String toFormat(String formato) {
@@ -153,6 +164,11 @@ public class Fecha implements InterfaceGeneral{
             errorInt = true;
             return false;
         }
+        return true;
+    }
+
+    private boolean fechaTieneFormato(String formato) {
+        
         return true;
     }
     

@@ -1,6 +1,6 @@
 package controladores;
 
-import modelos.Pasajero;
+import modelos.Persona;
 import modelos.Fecha;
 import modelos.Habitacion;
 import modelos.Mes;
@@ -10,67 +10,70 @@ import java.util.*;
 
 public class ControladorCalendario {
 
-    private List<Reserva> listaReserva = llenadoReservas();
+    public List<Reserva> listaReserva = llenadoReservas();
     public static List<Habitacion> listaHabitaciones = llenadoHabitaciones();
 
     public ControladorCalendario() {
     }
 
-    public List<Reserva> llenadoReservas() {
-        Pasajero cliente1 = new Pasajero("Jorge", "Chavez");
-        Pasajero cliente2 = new Pasajero("Miguel", "Grau");
-        Pasajero cliente3 = new Pasajero("Francisco", "Bolognesi");
-        Pasajero cliente4 = new Pasajero("Manuel", "Prada");
-        Pasajero cliente5 = new Pasajero("Jose", "Galvez");
-        Pasajero cliente6 = new Pasajero("Cesar", "Vallejo");
-        Pasajero cliente7 = new Pasajero("Jose", "Mariategui");
-        Pasajero cliente8 = new Pasajero("Alfonso", "Ugarte");
-        Pasajero cliente9 = new Pasajero("Jose", "Chocano");
-        Pasajero cliente10 = new Pasajero("Alejandro", "Magno");
-
+    private List<Reserva> llenadoReservas() {
+        Persona cliente1 = new Persona("Jorge", "Chavez");
+//        Pasajero cliente2 = new Pasajero("Miguel", "Grau");
+//        Pasajero cliente3 = new Pasajero("Francisco", "Bolognesi");
+//        Pasajero cliente4 = new Pasajero("Manuel", "Prada");
+//        Pasajero cliente5 = new Pasajero("Jose", "Galvez");
+//        Pasajero cliente6 = new Pasajero("Cesar", "Vallejo");
+//        Pasajero cliente7 = new Pasajero("Jose", "Mariategui");
+//        Pasajero cliente8 = new Pasajero("Alfonso", "Ugarte");
+//        Pasajero cliente9 = new Pasajero("Jose", "Chocano");
+//        Pasajero cliente10 = new Pasajero("Alejandro", "Magno");
+//
         listaReserva = new ArrayList<Reserva>();
-        listaReserva.add(new Reserva(cliente1, listaHabitaciones.get(1), 28, 5, 2012, "CONFIRMADA"));
-        listaReserva.add(new Reserva(cliente2, listaHabitaciones.get(2), 28, 5, 2012, "RESERVADA"));
-        listaReserva.add(new Reserva(cliente3, listaHabitaciones.get(4), 28, 5, 2012, "CHECK IN"));
-        listaReserva.add(new Reserva(cliente4, listaHabitaciones.get(5), 28, 5, 2012, "CHECK IN"));
-        listaReserva.add(new Reserva(cliente5, listaHabitaciones.get(9), 28, 5, 2012, "CHECK IN"));
-        listaReserva.add(new Reserva(cliente5, listaHabitaciones.get(10), 28, 5, 2012, "CONFIRMADA"));
-        listaReserva.add(new Reserva(cliente6, listaHabitaciones.get(11), 28, 5, 2012, "CONFIRMADA"));
-        listaReserva.add(new Reserva(cliente7, listaHabitaciones.get(12), 28, 5, 2012, "CONFIRMADA"));
-        listaReserva.add(new Reserva(cliente8, listaHabitaciones.get(21), 28, 5, 2012, "CONFIRMADA"));
-        listaReserva.add(new Reserva(cliente9, listaHabitaciones.get(22), 28, 5, 2012, "CONFIRMADA"));
-        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(23), 28, 5, 2012, "RESERVADA"));
-        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(24), 28, 5, 2012, "RESERVADA"));
-        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(24), 20, 6, 2012, "RESERVADA"));
-        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(23), 20, 6, 2012, "RESERVADA"));
-        return this.listaReserva;
+        listaReserva.add(new Reserva(cliente1, listaHabitaciones.get(0), 12, 6, 2012, "CONFIRMADA"));
+//        listaReserva.add(new Reserva(cliente2, listaHabitaciones.get(1), 28, 5, 2012, "RESERVADA"));
+//        listaReserva.add(new Reserva(cliente3, listaHabitaciones.get(2), 28, 5, 2012, "CHECK IN"));
+//        listaReserva.add(new Reserva(cliente4, listaHabitaciones.get(3), 28, 5, 2012, "CHECK IN"));
+//        listaReserva.add(new Reserva(cliente5, listaHabitaciones.get(4), 28, 5, 2012, "CHECK IN"));
+//        listaReserva.add(new Reserva(cliente5, listaHabitaciones.get(0), 29, 5, 2012, "CONFIRMADA"));
+//        listaReserva.add(new Reserva(cliente6, listaHabitaciones.get(1), 29, 5, 2012, "CONFIRMADA"));
+//        listaReserva.add(new Reserva(cliente7, listaHabitaciones.get(2), 29, 5, 2012, "CONFIRMADA"));
+//        listaReserva.add(new Reserva(cliente8, listaHabitaciones.get(3), 29, 5, 2012, "CONFIRMADA"));
+//        listaReserva.add(new Reserva(cliente9, listaHabitaciones.get(0), 30, 5, 2012, "CONFIRMADA"));
+//        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(1), 28, 5, 2012, "RESERVADA"));
+//        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(2), 28, 5, 2012, "RESERVADA"));
+//        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(3), 20, 6, 2012, "RESERVADA"));
+//        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(4), 20, 6, 2012, "RESERVADA"));
+        ControladorHotel.AgregarReservaPreliminar(listaHabitaciones.get(1), new Fecha("12/06/2012"), 6);
+        return ControladorHotel.reservas;
     }
 
     public static List<Habitacion> llenadoHabitaciones() {
         listaHabitaciones = new ArrayList<Habitacion>();
-        int i = 0;
-        int a = 0;
-        int b = 0;
-        int c = 0;
-        while (i < 30) {
-            if (i < 10) {
-                TipoHabitacion tipoHabitacion = new TipoHabitacion("NORMAL", 50.00);
-                Habitacion habitacion = new Habitacion(301 + a, tipoHabitacion);
-                listaHabitaciones.add(habitacion);
-                a++;
-            } else if (i < 20) {
-                TipoHabitacion tipoHabitacion = new TipoHabitacion("DOBLE", 100.00);
-                Habitacion habitacion = new Habitacion(201 + b, tipoHabitacion);
-                listaHabitaciones.add(habitacion);
-                b++;
-            } else {
-                TipoHabitacion tipoHabitacion = new TipoHabitacion("PRESIDENCIAL", 200.00);
-                Habitacion habitacion = new Habitacion(101 + c, tipoHabitacion);
-                listaHabitaciones.add(habitacion);
-                c++;
-            }
-            i++;
-        }
+        listaHabitaciones = ControladorHotel.habitaciones;
+        
+//        int i = 0;
+//        int a = 0;
+//        int b = 0;
+//        int c = 0;
+//        while (i < 30) {
+//            if (i < 10) {
+//                TipoHabitacion tipoHabitacion = new TipoHabitacion("NORMAL", 50.00);
+//                Habitacion habitacion = new Habitacion(301 + a, tipoHabitacion);
+//                listaHabitaciones.add(habitacion);
+//                a++;
+//            } else if (i < 20) {
+//                TipoHabitacion tipoHabitacion = new TipoHabitacion("DOBLE", 100.00);
+//                Habitacion habitacion = new Habitacion(201 + b, tipoHabitacion);
+//                listaHabitaciones.add(habitacion);
+//                b++;
+//            } else {
+//                TipoHabitacion tipoHabitacion = new TipoHabitacion("PRESIDENCIAL", 200.00);
+//                Habitacion habitacion = new Habitacion(101 + c, tipoHabitacion);
+//                listaHabitaciones.add(habitacion);
+//                c++;
+//            }
+//            i++;
+//        }
         return listaHabitaciones;
     }
 
@@ -181,7 +184,7 @@ public class ControladorCalendario {
     public Object[][] LlenadoDeCalendario(int nroSemanas, int dia, int mes, int anio) {
         
         Object[][] listaHabitacionesTabla = listaHabitacionesCom();
-        Object[] guia = new Object[30];
+        Object[] guia = new Object[listaHabitacionesTabla[0].length];
         System.arraycopy(listaHabitacionesTabla[0], 0, guia, 0, guia.length);
         Fecha[] diasDeSemanasFecha = listaDeDiasDeSemana(nroSemanas, dia, mes, anio);
 
@@ -204,7 +207,7 @@ public class ControladorCalendario {
     public Object[][] LlenadoDeCalendarioOrdenado(int nroSemanas, int dia, int mes, int anio) {
         
         Object[][] listaHabitacionesTabla = listaHabitacionesComOrdenado();
-        Object[] guia = new Object[30];
+        Object[] guia = new Object[listaHabitacionesTabla[0].length];
         System.arraycopy(listaHabitacionesTabla[0], 0, guia, 0, guia.length);
         Arrays.sort(guia);
         Fecha[] diasDeSemanasFecha = listaDeDiasDeSemana(nroSemanas, dia, mes, anio);

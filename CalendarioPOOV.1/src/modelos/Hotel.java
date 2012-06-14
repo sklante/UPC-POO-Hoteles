@@ -1,42 +1,33 @@
-
 package modelos;
 
-import java.util.Scanner;
-
-
 public class Hotel implements InterfaceGeneral{
-    
-private String nombreHotel;
-private String direccionClerk;
-private String nombre;
-Scanner in = new Scanner(System.in);
 
+    private String nombreHotel;
+    private String urlHotel;
+    private int cantidadHabitaciones;
+    private boolean estado;
+    private boolean errorInt;
+    private boolean errorObject;
 
-    public Hotel(String nombreHotel, String direccionClerk) {
+    public Hotel(String nombreHotel, String urlHotel) {
         this.nombreHotel = nombreHotel;
-        this.direccionClerk = direccionClerk;
-    }
-    
-    public Hotel(String nombreHotel, String direccionClerk, String nombre) {
-        this.nombreHotel = nombreHotel;
-        this.direccionClerk = direccionClerk;
-        this.nombre = nombre;
+        this.urlHotel = urlHotel;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getCantidadHabitaciones() {
+        return cantidadHabitaciones;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    public String getDireccionClerk() {
-        return direccionClerk;
+    public void setCantidadHabitaciones(int cantidadHabitaciones) {
+        this.cantidadHabitaciones = cantidadHabitaciones;
     }
 
-    public void setDireccionClerk(String direccionClerk) {
-        this.direccionClerk = direccionClerk;
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     public String getNombreHotel() {
@@ -46,101 +37,55 @@ Scanner in = new Scanner(System.in);
     public void setNombreHotel(String nombreHotel) {
         this.nombreHotel = nombreHotel;
     }
-   
-public boolean verificaNombreHotel(String nombreh){
-        boolean valido = false;
-       // this.password = null;
-        if(nombreh != null){
-            valido = true;
-        }
-        return valido;
+
+    public String getUrlHotel() {
+        return urlHotel;
     }
 
-    public String seleccionNombre(String nombreHotel){
-        String nomPro = "";
-        int opcion = 0;
-        System.out.println("1.- "+nombreHotel+"1");
-        System.out.println("2.- "+nombreHotel+"2");
-        System.out.println("3.- "+nombreHotel+"3");
-        System.out.println("4.- "+nombreHotel+"4");
-        System.out.println("5.- "+nombreHotel+"5");
-        System.out.println("Seleccione opciÃ³n = " );
-        do {
-
-        opcion = in.nextInt();
-
-        switch(opcion){
-             case 1:
-                    nomPro = nombreHotel + "1";
-                    break;
-             case 2:
-                    nomPro = nombreHotel + "2";
-                    break;
-             case 3:
-                    nomPro = nombreHotel + "3";
-                    break;
-             case 4:
-                    nomPro = nombreHotel + "4";
-                    break;
-             case 5:
-                    nomPro = nombreHotel + "5";
-                    break;
-
-            default:
-                    System.out.println("ERROR de ingreso");
-                    break;
-        }
-        if(opcion > 0 && opcion < 6){
-            System.out.println(nomPro);
-        }else{
-            System.out.println("Intente de nuevo.....");
-
-        }
-        }while(opcion > 5 || opcion < 1);
-
-        return nomPro;
+    public void setUrlHotel(String urlHotel) {
+        this.urlHotel = urlHotel;
     }
 
-    public String[] sugerirNombres(String nombreHotel){
-        boolean sugerir = false;
-        String nombres[] = new String[5];
-        for(int i=0; i < nombres.length; i++){
-            nombres[i] = nombreHotel + (i+1);
-        }
-        return nombres;
+    public String toString() {
+        return this.nombreHotel;
     }
-
-    public String asignarLink(String nombreHotel){
-        String link;
-        link = "La dirección Web es http://" + nombreHotel + ".clerk.im";
-
-        return link;
-    }
-
+    
     @Override
     public boolean isErrorInt() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return errorInt;
     }
 
     @Override
     public boolean isErrorObject() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public boolean validarIgualesObject(Object variable1, Object variable2) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return errorObject;
     }
 
     @Override
     public boolean validarNulos(Object campo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (campo != null) {
+            return true;
+        } else {
+            errorObject = true;
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validarIgualesObject(Object variable1, Object variable2) {
+        if (variable1.equals(variable2)) {
+            return true;
+        } else {
+            errorObject = true;
+            return false;
+        }
     }
 
     @Override
     public boolean validarNumerosValidos(int numero) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (numero <= 0) {
+            errorInt = true;
+            return false;
+        }
+        return true;
     }
-    
-    
 }

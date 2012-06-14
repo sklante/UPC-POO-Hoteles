@@ -12,13 +12,6 @@ public class TipoHabitacion implements InterfaceGeneral {
         this.precio = precio;
     }
 
-     public TipoHabitacion(String tipo, double precio, Moneda moneda) {
-         this.tipo = tipo;
-         this.precio = precio;
-         this.moneda = moneda;
-
-    }
-
     public double getPrecio() {
         return precio;
     }
@@ -89,11 +82,4 @@ public class TipoHabitacion implements InterfaceGeneral {
         }
         return true;
     }
-    public boolean verificaPrecio(double precio){
-        if(precio <= 0){
-            return true;
-        }
-        return false;
-    }
-
 }

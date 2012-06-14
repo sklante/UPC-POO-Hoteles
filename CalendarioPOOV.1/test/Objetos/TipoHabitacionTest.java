@@ -1,13 +1,19 @@
-
+/*
+ * To change this template, choose Tools | Templates and open the template in
+ * the editor.
+ */
 package Objetos;
 
-import controladores.ControladorMoneda;
-import modelos.Moneda;
+import controladores.ControladorHotel;
+import controladores.ControladorTipoHabitacion;
 import modelos.TipoHabitacion;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-
+/**
+ *
+ * @author Pc
+ */
 public class TipoHabitacionTest {
     
     public TipoHabitacionTest() {
@@ -20,58 +26,31 @@ public class TipoHabitacionTest {
         String result = tipoHabitacion.getTipo();
         assertEquals(expResult, result);
     }
+
     //Test de aceptacion Definir PRECIO
+
     @Test
     public void debeIngresarUnPrecioValido(){
         double price = 0.0;
-        TipoHabitacion tipohabitacion = new TipoHabitacion(null);
-        assertTrue(tipohabitacion.verificaPrecio(price));
+        assertTrue(ControladorTipoHabitacion.verificaPrecio(price));
         System.out.println("Usted debe ingresar un precio valido");
 
     }
+
     //Test de aceptacion Definir PRECIO
+
     @Test
     public void soloPuedeIngresarTresMonedas(){
-        int tamano;
-        ControladorMoneda controladormoneda = new ControladorMoneda();
-        Moneda moneda = new Moneda("S/.", 0.0, true);
+        int tamanoRecibido = 0;
+        int tamanoEnviado = 3;
+        ControladorHotel.agregarMoneda("Nuevo sol", "S/.",  1, true);
+        ControladorHotel.agregarMoneda("Dolar", "$.",  2, true);
+        ControladorHotel.agregarMoneda("Euro sol", "E/.",  3, true);
+        //ControladorHotel.agregarMoneda("Euro sol", "E/.",  3, true);
 
-        controladormoneda.variasMonedas();
-        tamano = controladormoneda.dataMoneda.size();
-        assertFalse(moneda.verificaTresMonedas(tamano));
-       
+        tamanoRecibido = ControladorHotel.monedas.size();
+        //System.out.println(tamanoRecibido);
+        Assert.assertEquals(tamanoRecibido, tamanoEnviado);
+        
     }
-  //PENDIENTE
-    @Test
-    public void ingresarPrecioEnMonedas(){
-        double TipoCambio = 0.0;
-        TipoHabitacion thabitacion = new TipoHabitacion("Single", 250.00);
-
-        Moneda moneda = new Moneda("S/.", 12, true);
-
-
-    }
-    //por revisar
-   /*     @Test
-    public void debeRegistrarPrecioPorTipoHabitacion(){
-
-        String tipoh  = "Single";
-        double preciop = 500.0;
-        String moneda = "S/.";
-
-        ControladorTipoHabitacion admin = new ControladorTipoHabitacion(tipoh, preciop);
-        assertTrue(admin.verificaPrecio(preciop));
-
-        System.out.println("Usted debe ingresar un precio valido");
-        admin.registrarPrecioHabitacion(tipoh, preciop, moneda);
-
-        TipoHabitacion tipo = admin.buscar(codigo);
-        // Assert
-        assertNotNull(tipo);
-        assertEquals(codigo, tipo.getCodigo());
-        assertEquals(descripcion, tipo.getDescripcion());
-        assertEquals(precio, tipo.getPrecio(), 0.0);
-    }*/
-
-
 }

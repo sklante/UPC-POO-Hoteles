@@ -2,14 +2,15 @@ package modelos;
 
 public class Habitacion implements InterfaceGeneral {
 
-    private int numHabitacion;
+    private Object numHabitacion;
     private String denominacion;
     private TipoHabitacion tipoHabitacion;
     private boolean errorInt;
     private boolean errorObject;
 
-    public Habitacion(int numHabitacion) {
+    public Habitacion(Object numHabitacion, TipoHabitacion tipoHabitacion) {
         this.numHabitacion = numHabitacion;
+        this.tipoHabitacion = tipoHabitacion;
     }
 
     public Habitacion(int numHabitacion, TipoHabitacion tipoHabitacion) {
@@ -33,11 +34,11 @@ public class Habitacion implements InterfaceGeneral {
         return tipoHabitacion;
     }
 
-    public int getNumHabitacion() {
+    public Object getNumHabitacion() {
         return numHabitacion;
     }
 
-    public void setNumHabitacion(int numHabitacion) {
+    public void setNumHabitacion(Object numHabitacion) {
         this.numHabitacion = numHabitacion;
     }
 

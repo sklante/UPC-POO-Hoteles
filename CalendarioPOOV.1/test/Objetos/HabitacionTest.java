@@ -20,7 +20,7 @@ public class HabitacionTest {
 
     @Test
     public void validarQueTodasTenganNumero() {
-        Habitacion habitacion = new Habitacion(101);
+        Habitacion habitacion = new Habitacion(101, null);
         assertNotNull(habitacion.getNumHabitacion());
     }
     
@@ -33,7 +33,7 @@ public class HabitacionTest {
     
     @Test
     public void validarQueSiSeCreaTipoQueCorresponda() {
-        Habitacion habitacion = new Habitacion(101);
+        Habitacion habitacion = new Habitacion(101, null);
         habitacion.setTipoHabitacion(new TipoHabitacion("Suite"));
         assertSame(habitacion.getTipoHabitacion().toString(),"Suite");
     }

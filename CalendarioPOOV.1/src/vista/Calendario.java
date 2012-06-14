@@ -8,6 +8,7 @@ import modelos.Fecha;
 import modelos.Mes;
 import modelos.Reserva;
 import controladores.ControladorCalendario;
+import controladores.ControladorHotel;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -27,7 +28,7 @@ public class Calendario extends javax.swing.JFrame {
         initComponents();
         iniciarCalendario();
         iniciarComboBoxs();
-        
+
     }
 
     private void iniciarCalendario() {
@@ -42,6 +43,9 @@ public class Calendario extends javax.swing.JFrame {
         //Llenado de columna de la tabla calendario
         iniciarTablaCalendario(tabListaHabitaciones, tabCalendarioReservas, 1, dia, mes, anio,
                 listaHabitacionesTablaSelected, radBtnOrdenarHabTipo.isSelected());
+        tabCalendarioReservas.setColumnSelectionAllowed(false);
+        tabListaHabitaciones.setColumnSelectionAllowed(true);
+        tabListaHabitaciones.setCellSelectionEnabled(true);
 
     }
 
@@ -63,7 +67,6 @@ public class Calendario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         cbxMesActual = new javax.swing.JComboBox();
@@ -89,6 +92,15 @@ public class Calendario extends javax.swing.JFrame {
         labFechaPrimeraTabla = new javax.swing.JLabel();
         labFechaUltimaTabla = new javax.swing.JLabel();
         cbxFiltroAvance = new javax.swing.JComboBox();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabReservas = new javax.swing.JTable();
+        btnAgregarHabitaciones = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -235,6 +247,79 @@ public class Calendario extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("DASHBOARD", jDesktopPane1);
 
+        tabReservas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Habitacion", "Fecha llegada", "Fecha salida", "Dias", "Total Moneda", "Editar"
+            }
+        ));
+        jScrollPane3.setViewportView(tabReservas);
+
+        btnAgregarHabitaciones.setText("+ Agregar Habitaciones");
+        btnAgregarHabitaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarHabitacionesActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Proximo Paso >");
+
+        jLabel2.setText("Defiinir pago");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAgregarHabitaciones)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(761, 761, 761)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarHabitaciones)
+                    .addComponent(jButton1))
+                .addGap(111, 111, 111)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(121, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("FACTURACION", jPanel1);
+        jTabbedPane2.addTab("FACTURACION", jTabbedPane3);
+
+        jTabbedPane1.addTab("RESERVAS", jTabbedPane2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -243,7 +328,7 @@ public class Calendario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -323,9 +408,10 @@ public class Calendario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void radBtnOrdenarHabTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtnOrdenarHabTipoActionPerformed
-        iniciarTablaCalendario(tabListaHabitaciones, tabCalendarioReservas, vistaSemanasSelected, fechaSelected.getDiaNumero(),
-                fechaSelected.getMesNumero(), fechaSelected.getAnio(), listaHabitacionesTablaSelected,
-                radBtnOrdenarHabTipo.isSelected());
+//        iniciarTablaCalendario(tabListaHabitaciones, tabCalendarioReservas, vistaSemanasSelected, fechaSelected.getDiaNumero(),
+//                fechaSelected.getMesNumero(), fechaSelected.getAnio(), listaHabitacionesTablaSelected,
+//                radBtnOrdenarHabTipo.isSelected());
+        System.out.println("Caracteristica con licencia pagada.");
     }//GEN-LAST:event_radBtnOrdenarHabTipoActionPerformed
 
     private void tabListaHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabListaHabitacionesMouseClicked
@@ -333,13 +419,32 @@ public class Calendario extends javax.swing.JFrame {
             int columna = tabListaHabitaciones.columnAtPoint(evt.getPoint());
             int fila = tabListaHabitaciones.rowAtPoint(evt.getPoint());
             try {
-                Reserva valueAt = (Reserva) tabListaHabitaciones.getValueAt(fila, columna);
-                JOptionPane.showMessageDialog(this, valueAt.toDetail(), "Detalle de Reserva", 2);
+                if (tabListaHabitaciones.getValueAt(fila, columna) != null) {
+                    Reserva valueAt = (Reserva) tabListaHabitaciones.getValueAt(fila, columna);
+                    JOptionPane.showMessageDialog(this, valueAt.toDetail(), "Detalle de Reserva", 2);
+                }else{
+                    JOptionPane.showMessageDialog(this, "No existe reserva en esta fecha" , "Detalle de Reserva", 2);
+                }
+
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "No hay reservación", "Detalle de Reserva", 1);
+                JOptionPane.showMessageDialog(this, "No se puede visualizar la reserva","Aviso de Error", 1);
             }
         }
     }//GEN-LAST:event_tabListaHabitacionesMouseClicked
+
+    private void btnAgregarHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarHabitacionesActionPerformed
+        anadirHabitacion anadir = new anadirHabitacion();
+        anadir.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnAgregarHabitacionesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        actualizarTablaReservas();
+        iniciarTablaCalendario(tabListaHabitaciones, tabCalendarioReservas, vistaSemanasSelected, fechaSelected.getDiaNumero(),
+                fechaSelected.getMesNumero(), fechaSelected.getAnio(), listaHabitacionesTablaSelected,
+                radBtnOrdenarHabTipo.isSelected());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,12 +557,21 @@ public class Calendario extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jtableCalendario);
         listaHabitacionesTablaSelected = listaHabitacionesTab;
         fechaSelected = tablaCalendario.fijarFechaActualEnTabla(titulos2);
+    }
+    
+    private void actualizarTablaReservas(){
+        tabReservas.setModel(new javax.swing.table.DefaultTableModel(
+    ControladorHotel.mapaReservasObject(),
+    new String [] {
+        "Habitacion", "Fecha llegada", "Fecha salida", "Dias", "Total Moneda", "Editar"
+    }
+));
 
-
-
+jScrollPane3.setViewportView(tabReservas);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnTresSemanas;
+    private javax.swing.JButton btnAgregarHabitaciones;
     private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnDosSemanas;
     private javax.swing.JButton btnHoy;
@@ -466,18 +580,25 @@ public class Calendario extends javax.swing.JFrame {
     private javax.swing.JButton btnUnaSemana;
     private javax.swing.JComboBox cbxFiltroAvance;
     private javax.swing.JComboBox cbxMesActual;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel labFechaPrimeraTabla;
     private javax.swing.JLabel labFechaUltimaTabla;
     private javax.swing.JProgressBar proBarAvanceDeMesTab;
     private javax.swing.JRadioButton radBtnOrdenarHabTipo;
     private javax.swing.JTable tabCalendarioReservas;
     private javax.swing.JTable tabListaHabitaciones;
+    private javax.swing.JTable tabReservas;
     // End of variables declaration//GEN-END:variables
     private ControladorCalendario tablaCalendario;
     private static Object[][] listaHabitacionesTablaSelected;
