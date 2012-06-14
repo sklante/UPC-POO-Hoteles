@@ -23,7 +23,53 @@ public class ReservaTest {
 
     public ReservaTest() {
     }
+    Reservas reserva = new Reservas();
 
+    @Test
+    public void hotelConNingunaHabitacionReservada() {
+        assertEquals(0, reserva.getReservas().size());
+
+        System.out.println("exiten " + reserva.getReservas().size() + " habitaciones reservadas");
+    }
+
+    @Test
+    public void hotelConUnaHabitacionReservada() {
+
+        Pasajero cliente1 = new Pasajero("Jorge", "Chavez");
+        TipoHabitacion tipoHabitacion = new TipoHabitacion("Suite", 50.00, null);
+        Habitacion habitacion101 = new Habitacion("101", tipoHabitacion, null);
+        
+        reserva.registrarReserva(cliente1, habitacion101, 10, 02, 1985, null, true);
+
+        assertEquals(1, reserva.getReservas().size());
+        System.out.println("exiten " + reserva.getReservas().size() + " habitaciones reservadas");
+
+    }
+    
+    @Test
+    public void hotelConVariasHabitacionesReservadas() {
+        Pasajero cliente1 = new Pasajero("Jorge", "Chavez");
+        TipoHabitacion tipoHabitacion = new TipoHabitacion("Suite", 50.00, null);
+        Habitacion habitacion101 = new Habitacion("101", tipoHabitacion, null);        
+          Pasajero cliente2 = new Pasajero("Jorge", "Chavez");
+        TipoHabitacion tipoHabitacion2 = new TipoHabitacion("Suite", 50.00, null);
+        Habitacion habitacion2 = new Habitacion("101", tipoHabitacion2, null);
+        
+        
+          Pasajero cliente3 = new Pasajero("Jorge", "Chavez");
+        TipoHabitacion tipoHabitacion3 = new TipoHabitacion("Suite", 50.00, null);
+        Habitacion habitacion3 = new Habitacion("101", tipoHabitacion3, null);
+        
+        reserva.registrarReserva(cliente1, habitacion101, 10, 02, 1985, null, true);
+        reserva.registrarReserva(cliente2, habitacion2, 10, 02, 1985, null, true);
+         reserva.registrarReserva(cliente3, habitacion3, 10, 02, 1985, null, true);
+        assertEquals(3, reserva.getReservas().size());
+        
+        System.out.println("exiten " + reserva.getReservas().size() + " habitaciones reservadas");
+    }
+    
+    
+/*
     @Test
     public void QueLosIdSeanCorrelativos() {
 
@@ -31,14 +77,14 @@ public class ReservaTest {
         Pasajero cliente2 = new Pasajero("Miguel", "Grau");
         Pasajero cliente3 = new Pasajero("Francisco", "Bolognesi");
 
-        
+
         TipoHabitacion tipoHabitacion = new TipoHabitacion("Suite", 50.00, null);
-      //  TipoHabitacion tipoHabitacion = new TipoHabitacion("Suite");
+        //  TipoHabitacion tipoHabitacion = new TipoHabitacion("Suite");
         Habitacion habitacion101 = new Habitacion("101", tipoHabitacion, null);
-         Habitacion habitacion102 = new Habitacion("102", tipoHabitacion, null);
-          Habitacion habitacion103 = new Habitacion("103", tipoHabitacion, null);
-          
-     
+        Habitacion habitacion102 = new Habitacion("102", tipoHabitacion, null);
+        Habitacion habitacion103 = new Habitacion("103", tipoHabitacion, null);
+
+
 
         Reserva reserva1 = new Reserva(cliente1, habitacion101, 27, 5, 2012);
         Reserva reserva2 = new Reserva(cliente2, habitacion102, 27, 5, 2012);
@@ -48,7 +94,7 @@ public class ReservaTest {
         assertEquals(reserva2.getIdReserva(), 2);
         assertEquals(reserva3.getIdReserva(), 3);
     }
-
+*/
     @Test
     public void QueNoSeanNull() {
 
@@ -56,10 +102,10 @@ public class ReservaTest {
         Pasajero cliente2 = new Pasajero("Miguel", "Grau");
         Pasajero cliente3 = new Pasajero("Francisco", "Bolognesi");
         TipoHabitacion tipoHabitacion = new TipoHabitacion("Suite", 50.00, null);
-        
+
         Habitacion habitacion101 = new Habitacion("101", tipoHabitacion, null);
-         Habitacion habitacion102 = new Habitacion("102", tipoHabitacion, null);
-          Habitacion habitacion103 = new Habitacion("103", tipoHabitacion, null);
+        Habitacion habitacion102 = new Habitacion("102", tipoHabitacion, null);
+        Habitacion habitacion103 = new Habitacion("103", tipoHabitacion, null);
 
         Reserva reserva1 = new Reserva(cliente1, habitacion101, 27, 5, 2012);
         Reserva reserva2 = new Reserva(cliente2, habitacion102, 27, 5, 2012);
@@ -83,10 +129,10 @@ public class ReservaTest {
         String resultado = " ";
         Pasajero pasajero = new Pasajero("Alfredo", "Luyo");
 
-            TipoHabitacion tipoHabitacion = new TipoHabitacion("single", 150.00, null);
+        TipoHabitacion tipoHabitacion = new TipoHabitacion("single", 150.00, null);
 
         Habitacion habitacion = new Habitacion("101", tipoHabitacion, null);
-        
+
 
         EstadoReserva estadoReserva = new EstadoReserva(confirma);
 
@@ -111,10 +157,10 @@ public class ReservaTest {
         String validado = " ";
 
         Pasajero pasajero = new Pasajero("Alfredo", "Luyo");
-        
-         TipoHabitacion tipoHabitacion = new TipoHabitacion("single", 150.00, null);
-       
-     Habitacion habitacion = new Habitacion("101", tipoHabitacion, null);
+
+        TipoHabitacion tipoHabitacion = new TipoHabitacion("single", 150.00, null);
+
+        Habitacion habitacion = new Habitacion("101", tipoHabitacion, null);
 
         EstadoReserva estadoReserva = new EstadoReserva(confirma);
 

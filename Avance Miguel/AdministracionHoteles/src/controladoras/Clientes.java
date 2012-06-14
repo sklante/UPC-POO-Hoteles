@@ -103,13 +103,22 @@ public class Clientes {
     }
     
     
+     void eliminaHabitaciones(String nombreHabitacion) {
+        
+        buscarHabitacion(nombreHabitacion);
+        habitaciones.remove(buscarHabitacion(nombreHabitacion));
+        
+       
+    }
     
 
-    private void buscarHabitacion(String nombreHabitacion) throws RuntimeException {
+    public Habitacion buscarHabitacion(String nombreHabitacion)  {
         for (Habitacion habitacion : habitaciones) {
             if (habitacion.getNombreHabitacion().equals(nombreHabitacion)) {
-                throw new RuntimeException("Habitacion registrado");
+                //throw new RuntimeException("Habitacion registrado");
+           return habitacion;
             }
         }
+        return null;
     }
 }

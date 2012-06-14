@@ -19,9 +19,9 @@ public class Reserva implements InterfaceGeneral{
     private boolean check;
     private boolean errorInt;
     private boolean errorObject;
-    //private Fecha fecha;
+  
     
-    public Reserva(Pasajero cliente, Habitacion habitacion, int dia, int mes, int anio){
+    public Reserva( Pasajero cliente, Habitacion habitacion, int dia, int mes, int anio){
         this.cliente=cliente;
         this.habitacion=habitacion;
         this.dia=dia;
