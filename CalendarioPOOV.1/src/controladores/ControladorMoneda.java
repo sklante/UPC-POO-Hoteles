@@ -10,9 +10,10 @@ public class ControladorMoneda {
 
 
     public void variasMonedas(){
-        this.dataMoneda.add(new Moneda( "S/.", 12, true, true, true));
-        this.dataMoneda.add(new Moneda( "$/.", 12, true, true, true));
-        this.dataMoneda.add(new Moneda( "€/.", 12, true, true, true));
+
+        this.dataMoneda.add(new Moneda("Soles", "S/.", 1, true));
+        this.dataMoneda.add(new Moneda( "Dolares", "$.", 1, true));
+        this.dataMoneda.add(new Moneda("Euros", "E/.", 1, true));
         //this.dataMoneda.add(new Moneda( "Y.", 12, true, true, true));
     }
 

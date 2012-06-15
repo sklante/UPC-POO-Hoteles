@@ -59,6 +59,12 @@ public class DefinirMonedas extends javax.swing.JFrame {
 
         jLabel4.setText("Nombre de Moneda");
 
+        txtNombreMoneda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreMonedaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,7 +90,7 @@ public class DefinirMonedas extends javax.swing.JFrame {
                                     .addComponent(txtTipoCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                                     .addComponent(txtSimboloMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                                     .addComponent(txtNombreMoneda))))
-                        .addContainerGap())))
+                        .addContainerGap(83, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,6 +138,10 @@ public class DefinirMonedas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ingrese los datos pedidos", "Error ingreso de Datos", 2);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void txtNombreMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreMonedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreMonedaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -160,7 +160,7 @@ public class ControladorHotel {
             return false;
         }
     }
-
+    //ascii 48 al 57 (numeros) 46= .  44= ,
     public static boolean esNumeroDecimal(String numero) {
         for (int i = 0; i < numero.length(); i++) {
             if (!((numero.charAt(i) > 47 && numero.charAt(i) < 58 || numero.charAt(i) == 46
