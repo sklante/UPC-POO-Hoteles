@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Monitoreo Asterisk</title>
+        <h:head>
+            <h:outputStylesheet library="css" name="table-style.css"  />
+        </h:head>
+    </h:head>
+    <h:body>
+        <h:form id="formPrincipal">
+            <br/>
+            <br/>
+            <h:panelGrid columns="2">
+            <h:inputText id="search" value="#{managerEvents.busqueda}" />
+            <h:commandLink action="#{managerEvents.doSearch()}">
+                <img src="resources/Buscar24x24.png" width="24" height="24" alt="Buscar16x16"/>
+                <f:ajax render="table" event="keypress"/>
+            </h:commandLink>
+            </h:panelGrid>
+            <h:dataTable id="table" value="#{managerEvents.sipList}" var="s"
+                         styleClass="order-table"
+                         headerClass="order-table-header"
+                         rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+
+                <h:column>
+                    <f:facet name="header">Direccion IP</f:facet>
+                    <a href="http://#{s.host}"> #{s.host}</a>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nombre/Usuario</f:facet>
+                    <h:outputLabel value="#{s.name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Puerto</f:facet>
+                    <h:outputLabel value="#{s.port}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">ACL</f:facet>
+                    <h:outputLabel value="#{s.acl}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Status</f:facet>
+                    <h:outputLabel value="#{s.status}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Alarma</f:facet>
+                    <h:graphicImage id="mapImage" url=""/>
+                </h:column>
+            </h:dataTable>
+            <h:commandButton action="#{managerEvents.doSipShowPeers()}" value="Actualizar" />
+
+        </h:form>
+    </h:body>
+</html>
+

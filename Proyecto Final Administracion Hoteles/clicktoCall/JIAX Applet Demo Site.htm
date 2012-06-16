@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>JIAX Applet Demo Site</title>
+<script language="Javascript">
+	var phone;
+    
+    function getPhone() {
+		return document.getElementById('phone');
+	}
+	
+	function debug(message) {
+		debugdiv = document.getElementById('debug');
+		debugdiv.innerHTML = debugdiv.innerHTML + message + "<br/>";
+	}
+	
+	function init(success) {
+		debug("init got called with init result="+success);
+		window.setTimeout("initMe()", 500);
+	}
+	
+	function callNetStat(side, callno, delay, dropped, losscnt, losspcnt, ooo, packets) {
+		debug(side+", Delay: "+delay+", Lost Percentage: "+losspcnt+"%");
+	}
+	
+	function initMe() {
+		getCodecs();
+		getMicBoost();
+		getFilterDenoise();
+		getFilterAGC();
+		getFilterEcho();
+		getFilterAAGC();
+		getFilterCN();
+		getAudioIn();
+	}
+	
+	function getMicBoost() {
+		phone = getPhone();
+		document.getElementById('micboost').disabled = (phone.getMicBoost()?false:true);
+	}
+	
+	function getFilterDenoise() {
+		phone = getPhone();
+		document.getElementById('denoise').disabled = (phone.getFilterDenoise()?false:true);
+	}
+	
+	function getFilterAGC() {
+		phone = getPhone();
+		document.getElementById('agc').disabled = (phone.getFilterAGC()?false:true);
+	}
+	
+	function getFilterEcho() {
+		phone = getPhone();
+		document.getElementById('echo').disabled = (phone.getFilterEcho()?false:true);
+	}
+
+	function getFilterAAGC() {
+		phone = getPhone();
+		document.getElementById('aagc').disabled = (phone.getFilterAAGC()?false:true);
+	}
+
+	function getFilterCN() {
+		phone = getPhone();
+		document.getElementById('cn').disabled = (phone.getFilterCN()?false:true);
+	}
+
+	function getCodecs() {
+		phone = getPhone();
+		codecCount = phone.supportedCodecsCount();
+		debug("iaxclient does support "+codecCount+" codecs.");
+		codecs = phone.supportedCodecs();
+		for(i=0;i<codecs.length;i++) {
+			newOption = new Option(codecs[i],codecs[i]);
+			document.getElementById('codec').options[document.getElementById('codec').options.length] = newOption;
+		}
+	}
+	
+	function getAudioIn() {
+		document.getElementById('audioin').options.length = 0;
+		phone = getPhone();
+		dcount = phone.getAudioDeviceCount('IN');
+		debug("There are "+dcount+" Audio In Devices");
+		audioin = phone.listAudioDevices('IN');
+		defaultdevice = phone.getDefaultAudioDevice('IN');
+		if (audioin) {
+			for(i=0;i<audioin.length;i++) {
+				newOption = new Option(audioin[i]+(defaultdevice==audioin[i]?" - Selected":""),audioin[i],(defaultdevice==audioin[i]?true:false),(defaultdevice==audioin[i]?true:false));
+				document.getElementById('audioin').options[document.getElementById('audioin').options.length] = newOption;
+			}
+		}
+	}
+	
+	function changeAudioDevice(type, select) {
+		phone = getPhone();
+		phone.setDefaultDevice(type, select.options[select.selectedIndex].value);
+		getAudioIn();
+	}
+	
+	function doRegister() {
+		debug("doRegister called");
+		var host = document.getElementById('iaxhost').value;
+		var cnumber = document.getElementById('cnumber').value;
+		var cname = document.getElementById('cname').value;
+		var user = document.getElementById('user').value;
+		var pass = document.getElementById('pass').value;
+		debug("Host: "+host);
+		debug("Calling Number: "+cnumber);
+		debug("Calling Name: "+cname);
+		debug("User: "+user);
+		debug("Secret: *********");
+		phone = getPhone();
+		window.regid = phone.register(host, 4569, user, pass, cnumber, cname);
+	}
+	
+	function doUnregister() {
+		debug("doUnregister called");
+		phone = getPhone();
+		phone.unregister(window.regid);
+	}
+	
+	function doDial() {
+		debug("doDial invoked");
+		phone = getPhone();
+		var number = document.getElementById('number').value;
+		debug("dial "+number+" called");
+		phone.setCodec(window.lineid, document.getElementById('codec').options[document.getElementById('codec').selectedIndex].value);
+		window.callid = phone.call(window.lineid, number, '');
+	}
+	
+	function doHangup() {
+		debug("doHangup invoked");
+		phone = getPhone();
+		phone.hangup(callid);
+	}
+	
+	function doAnswer() {
+		debug("doAnswer invoked");
+		phone = getPhone();
+		phone.answer(callid);
+	}
+	
+	function registerState(lineid, state, error) {
+		debug("Registered callback for line: "+lineid+" with state "+state+" or error: "+error);
+		window.lineid = lineid;
+	}
+	
+	function callState(callid, state) {
+		debug("Registered callback for call: "+callid+" with state "+state);
+		window.callid = callid;
+	}
+	
+	function newCall(callno, callstate) {
+			// new incoming call
+			debug("Incoming call...");
+			callid = callno;
+			document.getElementById('answer').style.visibility = 'visible';
+	}
+
+	function hostreachable(status, roundtrip) {
+		debug("Host reachable message received, status: "+status+", roundtrip: "+roundtrip);
+	}
+	
+	function levelsCallback(input, output) {
+		debug("Levels Input: "+input+", Output: "+output);
+	}
+
+	function hungUp(causecode) {
+		debug("Hungup, CauseCode: "+causecode);
+	}
+
+
+	function ringing(inbound, far, near, answered, callingname) {
+		if (inbound == "true") {
+			// new incoming call
+			debug("Incoming ringing...");
+			debug("Far: "+far);
+			debug("Near: "+near);
+			debug("Answered: "+answered);
+			debug("callingname: "+callingname);
+		} else {
+			// new outbound call
+			debug("Outbound ringing...");
+			debug("Far: "+far);
+			debug("Near: "+near);
+			debug("Answered: "+answered);
+			debug("callingname: "+callingname);
+		}
+	}
+	
+	
+	function answered(inbound, far, near, answered, callingname) {
+		if (inbound == "true") {
+			// new incoming call
+			debug("Incoming answered...");
+			debug("Far: "+far);
+			debug("Near: "+near);
+			debug("Answered: "+answered);
+			debug("callingname: "+callingname);
+		} else {
+			// new outbound call
+			debug("Outbound answered...");
+			debug("Far: "+far);
+			debug("Near: "+near);
+			debug("Answered: "+answered);
+			debug("callingname: "+callingname);
+		}
+	}
+	
+	function getAudioInDevices() {
+		phone = getPhone();
+		devices = phone.getAudioInListLen();
+		for(var i=0;i<devices;i++) {
+			debug("Audio In Device: "+phone.getAudioInList(i));
+		}
+		debug("Current Audio In Device: "+phone.getAudioIn());
+	}
+	
+	function getAudioOutDevices() {
+		phone = getPhone();
+		devices = phone.getAudioOutListLen();
+		for(var i=0;i<devices;i++) {
+			debug("Audio Out Device: "+phone.getAudioOutList(i));
+		}
+		debug("Current Audio Out Device: "+phone.getAudioOut());
+	}
+	
+	function doSetMicBoost() {
+		phone = getPhone();
+		if (document.getElementById('micboost').checked) {
+			phone.setMicBoost(true);
+		} else {
+			phone.setMicBoost(false);
+		}
+		getMicBoost();
+		getFilterDenoise();
+		getFilterAGC();
+		getFilterEcho();
+		getFilterAAGC();
+		getFilterCN();
+	}
+	
+	function doSetDenoise() {
+		phone = getPhone();
+		if (document.getElementById('denoise').checked) {
+			phone.setFilterDenoise(true);
+		} else {
+			phone.setFilterDenoise(false);
+		}
+		getMicBoost();
+		getFilterDenoise();
+		getFilterAGC();
+		getFilterEcho();
+		getFilterAAGC();
+		getFilterCN();
+	}
+	
+	function doSetAGC() {
+		phone = getPhone();
+		phone.setFilterAGC(document.getElementById("agc").checked);
+		getMicBoost();
+		getFilterDenoise();
+		getFilterAGC();
+		getFilterEcho();
+		getFilterAAGC();
+		getFilterCN();
+	}
+	
+	function doSetEcho() {
+		phone = getPhone();
+		phone.setFilterEcho(document.getElementById("echo").checked);
+		getMicBoost();
+		getFilterDenoise();
+		getFilterAGC();
+		getFilterEcho();
+		getFilterAAGC();
+		getFilterCN();
+	}
+	
+	function doSetAAGC() {
+		phone = getPhone();
+		phone.setFilterAAGC(document.getElementById("aagc").checked);
+		getMicBoost();
+		getFilterDenoise();
+		getFilterAGC();
+		getFilterEcho();
+		getFilterAAGC();
+		getFilterCN();
+	}
+	
+	function doSetCN() {
+		phone = getPhone();
+		phone.setFilterCN(document.getElementById("cn").checked);
+		getMicBoost();
+		getFilterDenoise();
+		getFilterAGC();
+		getFilterEcho();
+		getFilterAAGC();
+		getFilterCN();
+	}
+
+	function sendDTMF(dtmf) {
+		phone = getPhone();
+		phone.sendDTMF(window.callid,dtmf);
+	}
+	
+</script>
+</head>
+<body>
+
+<h1>Here you can test the IAX Java Applet</h1>
+
+<p>You will need your own IAX Account to test the applet - i do not provide one for you...</p>
+
+<!--
+<APPLET code="org.callino.jiaxcapplet.JIAXCApplet" width="300" height="100" archive="jiaxcapplet.jar,jna.jar,log4j-1.2.11.jar" id="phone">
+	<param name="mayscript" value="true"/>
+	<param name="debug" value="1"/>
+	<param name="codebase_lookup" value="false">
+	
+	<param name="separate_jvm" value="1"/>
+	Java Applet Support Required
+</APPLET>
+-->
+
+<!--
+<applet code="org.jdesktop.applet.util.JNLPAppletLauncher"
+      width=600
+      height=400
+      archive="applet-launcher.jar,jiaxcapplet.jar,jna.jar,log4j-1.2.11.jar"
+      name="phone"
+      id="phone">
+   <param name="codebase_lookup" value="false">
+   <param name="subapplet.classname" value="org.callino.jiaxcapplet.JIAXCApplet">
+   <param name="subapplet.displayname" value="JIAXC Applet">
+   <param name="progressbar" value="true">
+ </applet>
+-->
+
+<applet name="phone" id="phone" width="1" height="1">
+<param name="jnlp_href" value="jiaxcapplet.jnlp">
+</applet>
+
+
+
+<div id="debug" style="top:0px;left:0px;width:600px;height:300px;border-width:1px;border-style:solid;overflow:auto;">
+</div>
+<form>
+	IAX Host: <input id="iaxhost" type="text"><br>
+	Calling Number: <input id="cnumber" type="text"><br>
+	Calling Name: <input id="cname" type="text"><br>
+	Username: <input id="user" type="text"><br>
+	Secret: <input id="pass" value="" type="password"><br>
+	<input id="register" value="Register" onclick="javascript:doRegister();" type="button"><br><br>
+
+	Audio In Device: 
+	<select name="audioin" id="audioin" onchange="changeAudioDevice('IN',this);">
+	</select><br>
+
+	
+	<select name="codec" id="codec">
+	</select>
+	Number to dial: <input id="number" type="text">
+	<input id="dial" value="Dial now" onclick="javascript:doDial();" type="button"><br>
+	<input id="hangup" value="Hangup" onclick="javascript:doHangup();" type="button"><br>
+	<input id="unregister" value="Unregister" onclick="javascript:doUnregister();" type="button"><br>
+	<input id="answer" value="Answer Call" onclick="javascript:doAnswer();" style="visibility: hidden;" type="button"><br>
+	<input id="micboost" onchange="javascript:doSetMicBoost();" type="checkbox">Mikrofon Boost<br>
+	<input id="denoise" onchange="javascript:doSetDenoise();" type="checkbox">Denoise Filter<br>
+	<input id="agc" onchange="javascript:doSetAGC();" type="checkbox">AGC Filter<br>
+	<input id="echo" onchange="javascript:doSetEcho();" type="checkbox">Echo Filter<br>
+	<input id="aagc" onchange="javascript:doSetAAGC();" type="checkbox">AAGC Filter<br>
+	<input id="cn" onchange="javascript:doSetCN();" type="checkbox">Comfort Noise Generator on silence<br>
+	
+	<table>
+		<tbody><tr>
+			<td><input name="dtmf1" value="1" onclick="sendDTMF(this.value);" type="button"></td>
+			<td><input name="dtmf2" value="2" onclick="sendDTMF(this.value);" type="button"></td>
+			<td><input name="dtmf3" value="3" onclick="sendDTMF(this.value);" type="button"></td>
+		</tr>
+		<tr>
+			<td><input name="dtmf4" value="4" onclick="sendDTMF(this.value);" type="button"></td>
+			<td><input name="dtmf5" value="5" onclick="sendDTMF(this.value);" type="button"></td>
+			<td><input name="dtmf6" value="6" onclick="sendDTMF(this.value);" type="button"></td>
+		</tr>
+		<tr>
+			<td><input name="dtmf7" value="7" onclick="sendDTMF(this.value);" type="button"></td>
+			<td><input name="dtmf8" value="8" onclick="sendDTMF(this.value);" type="button"></td>
+			<td><input name="dtmf9" value="9" onclick="sendDTMF(this.value);" type="button"></td>
+		</tr>
+		<tr>
+			<td><input name="dtmfs" value="*" onclick="sendDTMF(this.value);" type="button"></td>
+			<td><input name="dtmf0" value="0" onclick="sendDTMF(this.value);" type="button"></td>
+			<td><input name="dtmfr" value="#" onclick="sendDTMF(this.value);" type="button"></td>
+		</tr>
+	</tbody></table>
+</form>
+
+</body></html>
