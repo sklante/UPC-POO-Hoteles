@@ -12,6 +12,12 @@ public class TipoHabitacion implements InterfaceGeneral {
         this.precio = precio;
     }
 
+    public TipoHabitacion(String normaL, double precio, Moneda moneda) {
+
+        this.precio = precio;
+        this.moneda = moneda;
+    }
+
     public double getPrecio() {
         return precio;
     }

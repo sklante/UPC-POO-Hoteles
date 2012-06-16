@@ -2,6 +2,10 @@
 
 package controladores;
 
+import modelos.Habitacion;
+import modelos.Hotel;
+import modelos.TipoHabitacion;
+
 /**
  *
  * @author alfredol
@@ -14,5 +18,11 @@ public class ControladorTipoHabitacion {
         }
         return false;
     }
+    public static boolean verificarNumeroDeHabitaciones(String numeroDeHabitaciones) {
+        if (numeroDeHabitaciones != null) {
+            return true;
+        }
+        return false;
+    }
 
-}
+ }
