@@ -16,6 +16,7 @@ public class TablaTipoHabitaciones extends JFrame {
     private static final long serialVersionUID = 1L;
     protected JTable table = null;
     private JScrollPane scrollPane = null;
+    public static boolean termino = false;
 
     private class TABLE_MODEL extends DefaultTableModel {
 
@@ -98,8 +99,11 @@ public class TablaTipoHabitaciones extends JFrame {
             if(table.getValueAt(i, 0) != null){
             habitaciones[i]=table.getValueAt(i, 0).toString();
             ControladorHotel.crearHabitaciones(table.getValueAt(i, 0).toString(), (TipoHabitacion)table.getValueAt(i, 1));
+            termino=true;
             }else{
                 JOptionPane.showMessageDialog(this, "Debe colocar todos los nombre a las habitaciones " + (i+1), "Error ingreso de Datos", 2);
+                termino = false;
+                break;
             }
         }
         for (String habitacion : habitaciones) {

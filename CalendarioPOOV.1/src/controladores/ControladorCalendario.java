@@ -17,7 +17,7 @@ public class ControladorCalendario {
     }
 
     private List<Reserva> llenadoReservas() {
-        Persona cliente1 = new Persona("Jorge", "Chavez");
+//        Persona cliente1 = new Persona("Jorge", "Chavez");
 //        Pasajero cliente2 = new Pasajero("Miguel", "Grau");
 //        Pasajero cliente3 = new Pasajero("Francisco", "Bolognesi");
 //        Pasajero cliente4 = new Pasajero("Manuel", "Prada");
@@ -28,8 +28,8 @@ public class ControladorCalendario {
 //        Pasajero cliente9 = new Pasajero("Jose", "Chocano");
 //        Pasajero cliente10 = new Pasajero("Alejandro", "Magno");
 //
-        listaReserva = new ArrayList<Reserva>();
-        listaReserva.add(new Reserva(cliente1, listaHabitaciones.get(0), 12, 6, 2012, "CONFIRMADA"));
+//        listaReserva = new ArrayList<Reserva>();
+//        listaReserva.add(new Reserva(ControladorHotel.generarId(listaHabitaciones.get(0), new Fecha(12, 6, 2012), 1),cliente1, listaHabitaciones.get(0), 12, 6, 2012, "CONFIRMADA"));
 //        listaReserva.add(new Reserva(cliente2, listaHabitaciones.get(1), 28, 5, 2012, "RESERVADA"));
 //        listaReserva.add(new Reserva(cliente3, listaHabitaciones.get(2), 28, 5, 2012, "CHECK IN"));
 //        listaReserva.add(new Reserva(cliente4, listaHabitaciones.get(3), 28, 5, 2012, "CHECK IN"));
@@ -43,7 +43,7 @@ public class ControladorCalendario {
 //        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(2), 28, 5, 2012, "RESERVADA"));
 //        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(3), 20, 6, 2012, "RESERVADA"));
 //        listaReserva.add(new Reserva(cliente10, listaHabitaciones.get(4), 20, 6, 2012, "RESERVADA"));
-        ControladorHotel.AgregarReservaPreliminar(listaHabitaciones.get(1), new Fecha("12/06/2012"), 6);
+//        ControladorHotel.AgregarReservaPreliminar(listaHabitaciones.get(1), new Fecha("12/06/2012"), 6);
         return ControladorHotel.reservas;
     }
 

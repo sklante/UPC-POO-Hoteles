@@ -14,6 +14,7 @@ public class TablaDefinirPrecios extends JFrame {
     private static final long serialVersionUID = 1L;
     protected JTable table = null;
     private JScrollPane scrollPane = null;
+    public static boolean termino=false;
 
     private class TABLE_MODEL extends DefaultTableModel {
 
@@ -88,11 +89,15 @@ public class TablaDefinirPrecios extends JFrame {
 
     public void guardarCambios() {
         for (int i = 0; i < tiposHabitacion.length; i++) {
-            if (table.getValueAt(i, 1) != null) {
+            if (Double.parseDouble(table.getValueAt(i, 1).toString())!= 0.0) {
                 double precio = Double.parseDouble(table.getValueAt(i, 1).toString());
                 ControladorHotel.asignarPrecios(precio, i, (Moneda) table.getValueAt(i, 2));
+                WizardPaso3.termino=true;
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Debe definir todos los precios" + (i + 1), "Error ingreso de Datos", 2);
+                WizardPaso3.termino=false;
+                break;
             }
         }
     }

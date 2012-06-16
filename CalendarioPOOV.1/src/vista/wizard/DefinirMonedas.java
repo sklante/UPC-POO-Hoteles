@@ -59,12 +59,6 @@ public class DefinirMonedas extends javax.swing.JFrame {
 
         jLabel4.setText("Nombre de Moneda");
 
-        txtNombreMoneda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreMonedaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,7 +84,7 @@ public class DefinirMonedas extends javax.swing.JFrame {
                                     .addComponent(txtTipoCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                                     .addComponent(txtSimboloMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                                     .addComponent(txtNombreMoneda))))
-                        .addContainerGap(83, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,8 +115,8 @@ public class DefinirMonedas extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         if (!ControladorHotel.esNulos(txtTipoCambio.getText()) && !ControladorHotel.esNulos(txtNombreMoneda.getText())) {
-            if (ControladorHotel.esNumeroDecimal(txtTipoCambio.getText())) {
-                Moneda moneda = new Moneda(txtNombreMoneda.getText(),txtSimboloMoneda.getText(), Double.parseDouble(txtTipoCambio.getText()),
+            double tipoDeCambio = ControladorHotel.tipoDeCambio(txtTipoCambio.getText());
+                Moneda moneda = new Moneda(txtNombreMoneda.getText(),txtSimboloMoneda.getText(), tipoDeCambio,
                         esPredeterminada.isSelected());
                 ControladorHotel.monedas.add(moneda);
                 moneda = null;
@@ -131,17 +125,11 @@ public class DefinirMonedas extends javax.swing.JFrame {
                 txtTipoCambio.setText("");
                 esPredeterminada.setSelected(false);
                 this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Ingrese un numero valido", "Error ingreso de Datos", 2);
-            }
+
         } else {
             JOptionPane.showMessageDialog(this, "Ingrese los datos pedidos", "Error ingreso de Datos", 2);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
-
-    private void txtNombreMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreMonedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreMonedaActionPerformed
 
     /**
      * @param args the command line arguments

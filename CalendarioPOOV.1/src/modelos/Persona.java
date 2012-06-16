@@ -5,40 +5,42 @@ package modelos;
 
 public class Persona implements InterfaceGeneral{
     
-    private static int id=1;
-    private int idCliente;
     private String nombre;
-    private String apellido;
     private Documento documento;
     private String direccion;
     private String ciudad;
     private String estado;
+    private String pais;
     private String cumpleanios;
     private TipoPasajero tipoCliente;
     private String email;
     private String tel;
     private String fax;
+    private boolean esEmpleado;
     private boolean errorInt;
     private boolean errorObject;
     
     public Persona(){
     }
     
-    public Persona(String nombre, String apellido){
+    public Persona(String nombre, Documento documento, String telefono, String correo){
         this.nombre = nombre;
-        this.apellido= apellido;
-        this.idCliente = id;
-        id++;
-    }
-    
-    public Persona(String nombre, String apellido, TipoPasajero tipoCliente){
-        this.nombre = nombre;
-        this.apellido= apellido;
-        this.tipoCliente = tipoCliente;
-        this.idCliente = id;
-        id++;
+        this.documento= documento;
+        this.email = correo;
     }
 
+    public Persona(String nombre){
+        this.nombre = nombre;
+    }
+
+    public void setEsEmpleado(boolean esEmpleado) {
+        this.esEmpleado = esEmpleado;
+    }
+
+    public boolean isEsEmpleado() {
+        return esEmpleado;
+    }
+    
     public Documento getDocumento() {
         return documento;
     }
@@ -55,6 +57,14 @@ public class Persona implements InterfaceGeneral{
         this.ciudad = ciudad;
     }
 
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+    
     public String getCumpleanios() {
         return cumpleanios;
     }
@@ -87,14 +97,6 @@ public class Persona implements InterfaceGeneral{
         return tipoCliente;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -109,14 +111,6 @@ public class Persona implements InterfaceGeneral{
 
     public void setFax(String fax) {
         this.fax = fax;
-    }
-
-    public int getIdCliente() {
-        return this.idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
     }
 
     public String getNombre() {
@@ -136,7 +130,7 @@ public class Persona implements InterfaceGeneral{
     }
     
     public String toString(){
-        return this.nombre + " " + this.apellido;
+        return this.nombre;
     }
     
     

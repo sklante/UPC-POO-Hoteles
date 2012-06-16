@@ -26,8 +26,7 @@ public class TipoHabitacionTest {
         String result = tipoHabitacion.getTipo();
         assertEquals(expResult, result);
     }
-
-    //Test de aceptacion Definir PRECIO
+        //Test de aceptacion Definir PRECIO
 
     @Test
     public void debeIngresarUnPrecioValido(){
@@ -51,6 +50,7 @@ public class TipoHabitacionTest {
         tamanoRecibido = ControladorHotel.monedas.size();
         //System.out.println(tamanoRecibido);
         Assert.assertEquals(tamanoRecibido, tamanoEnviado);
-        
+
     }
+
 }

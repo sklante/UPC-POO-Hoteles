@@ -50,11 +50,11 @@ public class WizardPersonal extends javax.swing.JFrame {
 
         jLabel1.setText("Ingrese su correo electrónico:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 2, 11));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("por favor ingrese correctamente sus datos");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Información Personal");
 
         jLabel6.setText("Ingrese su contraseña:");

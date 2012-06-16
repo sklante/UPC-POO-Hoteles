@@ -2,6 +2,9 @@
 
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 public class Empresa {
@@ -14,9 +17,18 @@ public class Empresa {
     private String ciudad;
     private String estado;
     private String pais;
-    private String contacto;
     private Medios medioDePago;
     private String Convenio;
+    private List<Persona> contacto;
+    
+    public Empresa(String nombre, Documento documento, String telefono, String correo, Medios medioDePago){
+        this.contacto = new ArrayList<Persona>();
+        this.empresa=nombre;
+        this.identificacion=documento;
+        this.telefono=telefono;
+        this.correoElectronico=correo;
+        this.medioDePago=medioDePago;
+    }
 
     public String getConvenio() {
         return Convenio;
@@ -34,12 +46,12 @@ public class Empresa {
         this.ciudad = ciudad;
     }
 
-    public String getContacto() {
-        return contacto;
+    public void setContacto(List<Persona> contacto) {
+        this.contacto = contacto;
     }
 
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
+    public List<Persona> getContacto() {
+        return contacto;
     }
 
     public String getCorreoElectronico() {

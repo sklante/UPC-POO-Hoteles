@@ -6,11 +6,7 @@ package Objetos;
 
 import controladores.ControladorReserva;
 import junit.framework.Assert;
-import modelos.EstadoReserva;
-import modelos.Persona;
-import modelos.Habitacion;
-import modelos.TipoHabitacion;
-import modelos.Reserva;
+import modelos.*;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -24,41 +20,41 @@ public class ReservaTest {
 
     public ReservaTest() {
     }
-
+/*
     @Test
     public void QueLosIdSeanCorrelativos() {
 
-        Persona cliente1 = new Persona("Jorge", "Chavez");
-        Persona cliente2 = new Persona("Miguel", "Grau");
-        Persona cliente3 = new Persona("Francisco", "Bolognesi");
+        Persona cliente1 = new Persona("Jorge Chavez", new Documento("45637772", new TipoDocumento("dni")), null, null);
+        Persona cliente2 = new Persona("Miguel Grau", new Documento("45637772", new TipoDocumento("dni")), null, null);
+        Persona cliente3 = new Persona("Francisco Bolognesi", new Documento("45637772", new TipoDocumento("dni")), null, null);
         TipoHabitacion tipoHabitacion = new TipoHabitacion("Suite");
         Habitacion habitacion101 = new Habitacion(101, tipoHabitacion);
         Habitacion habitacion102 = new Habitacion(102, tipoHabitacion);
         Habitacion habitacion103 = new Habitacion(103, tipoHabitacion);
 
-        Reserva reserva1 = new Reserva(cliente1, habitacion101, 27, 5, 2012);
-        Reserva reserva2 = new Reserva(cliente2, habitacion102, 27, 5, 2012);
-        Reserva reserva3 = new Reserva(cliente3, habitacion103, 27, 5, 2012);
+        Reserva reserva1 = new Reserva("",cliente1, habitacion101, 27, 5, 2012);
+        Reserva reserva2 = new Reserva("",cliente2, habitacion102, 27, 5, 2012);
+        Reserva reserva3 = new Reserva("",cliente3, habitacion103, 27, 5, 2012);
 
         assertEquals(reserva1.getIdReserva(), 1);
         assertEquals(reserva2.getIdReserva(), 2);
         assertEquals(reserva3.getIdReserva(), 3);
     }
-
+*/
     @Test
     public void QueNoSeanNull() {
 
-        Persona cliente1 = new Persona("Jorge", "Chavez");
-        Persona cliente2 = new Persona("Miguel", "Grau");
-        Persona cliente3 = new Persona("Francisco", "Bolognesi");
+        Persona cliente1 = new Persona("Jorge Chavez", new Documento("45637772", new TipoDocumento("dni")), null, null);
+        Persona cliente2 = new Persona("Miguel Grau", new Documento("45637772", new TipoDocumento("dni")),null, null);
+        Persona cliente3 = new Persona("Francisco Bolognesi", new Documento("45637772", new TipoDocumento("dni")), null, null);
         TipoHabitacion tipoHabitacion = new TipoHabitacion("Suite");
         Habitacion habitacion101 = new Habitacion(101, tipoHabitacion);
         Habitacion habitacion102 = new Habitacion(102, tipoHabitacion);
         Habitacion habitacion103 = new Habitacion(103, tipoHabitacion);
 
-        Reserva reserva1 = new Reserva(cliente1, habitacion101, 27, 5, 2012);
-        Reserva reserva2 = new Reserva(cliente2, habitacion102, 27, 5, 2012);
-        Reserva reserva3 = new Reserva(cliente3, habitacion103, 27, 5, 2012);
+        Reserva reserva1 = new Reserva("",cliente1, habitacion101, 27, 5, 2012);
+        Reserva reserva2 = new Reserva("",cliente2, habitacion102, 27, 5, 2012);
+        Reserva reserva3 = new Reserva("",cliente3, habitacion103, 27, 5, 2012);
 
         assertNotNull(reserva1.getHabitacion());
         assertNotNull(reserva2.getHabitacion());
@@ -68,23 +64,23 @@ public class ReservaTest {
         assertNotNull(reserva3.getCliente());
 
     }
-        //Test de Aceptacion de Historia CONFIRMACION
+
+    //Test de Aceptacion de Historia CONFIRMACION
 
     @Test
     public void confirmarReservaHastaAntesDeCheckIn() {
 
-        String confirma = "NO CONFIRMADO";
-        String verifica = "CONFIRMADO";
-        String resultado = " ";
-        Persona pasajero = new Persona("Alfredo", "Luyo");
+        boolean noConfirmado = false;
+        boolean verifica = true;
+        boolean resultado;
+        Persona pasajero = new Persona("Alfredo");
         TipoHabitacion tipoHabitacion = new TipoHabitacion("SINGLE", 150.00);
         Habitacion habitacion = new Habitacion(101, tipoHabitacion);
 
-        EstadoReserva estadoReserva = new EstadoReserva(confirma);
+        Reserva reserva = new Reserva("123",pasajero, habitacion, 8, 6, 2012, noConfirmado);
+        assertNotNull(reserva);
 
-        Reserva reserva = new Reserva(pasajero, habitacion, 8, 6, 2012, estadoReserva.getEstado());
-
-        resultado = ControladorReserva.confirmarReserva(estadoReserva.getEstado());
+        resultado = ControladorReserva.confirmarReserva(noConfirmado);
 
         Assert.assertEquals(verifica, resultado);
 
@@ -99,21 +95,19 @@ public class ReservaTest {
     //si es asi, lo convierte el estado automaticamente a CANCELADO AUTOMATICO
     @Test
     public void validarAutomaticoSiNoConfirmaReserva(){
-        String confirma = "CONFIRMADO";
-        String validado = " ";
+        boolean confirma = false;
+        boolean validado = true;
 
-        Persona pasajero = new Persona("Alfredo", "Luyo");
+        Persona pasajero = new Persona("Alfredo");
         TipoHabitacion tipoHabitacion = new TipoHabitacion("SINGLE", 150.00);
         Habitacion habitacion = new Habitacion(101, tipoHabitacion);
 
-        EstadoReserva estadoReserva = new EstadoReserva(confirma);
+        Reserva reserva = new Reserva("123", pasajero, habitacion, 8, 6, 2012, confirma, false, false);
 
-        Reserva reserva = new Reserva(pasajero, habitacion, 8, 6, 2012, estadoReserva.getEstado(), false);
-
-        validado = ControladorReserva.validaAutomaticoFecha(9, 6, 2012, estadoReserva.getEstado(), false);
+        validado = ControladorReserva.validaAutomaticoFecha(9, 6, 2012, confirma, false);
 
         Assert.assertEquals(confirma, validado);
-        System.out.println("Confirmación sigue vigente");
+        System.out.println("Confirmación cancelada");
     }
 
     //Test de Aceptacion de Historia CHECK-IN
@@ -121,18 +115,16 @@ public class ReservaTest {
 
     @Test
     public void tomarReservaDeHabitacion(){
-        String confirma = "CONFIRMADO";
+        boolean confirma = false;
         boolean checkInEnviado = true;
 
-        Persona pasajero = new Persona("Alfredo", "Luyo");
+        Persona pasajero = new Persona("Alfredo");
         TipoHabitacion tipoHabitacion = new TipoHabitacion("SINGLE", 150.00);
         Habitacion habitacion = new Habitacion(101, tipoHabitacion);
 
-        EstadoReserva estadoReserva = new EstadoReserva(confirma);
+        Reserva reserva = new Reserva("123", pasajero, habitacion, 8, 6, 2012, true, confirma, false);
 
-        Reserva reserva = new Reserva(pasajero, habitacion, 8, 6, 2012, estadoReserva.getEstado(), false);
-
-        boolean checkInEsperado = ControladorReserva.realizaCheckInOut(reserva.isCheck());
+        boolean checkInEsperado = ControladorReserva.realizaCheckInOut(reserva.isCheckIn());
 
         Assert.assertEquals(checkInEnviado,checkInEsperado);
         System.out.println("Se realizó el Check-In de la Reserva confirmada");
@@ -142,20 +134,18 @@ public class ReservaTest {
 
     @Test
     public void liberaReservaDeHabitacion(){
-        String confirma = "CONFIRMADO";
+        boolean confirma = true;
         boolean checkInEsperado = false;
-        String reservaEsperada = "CANCELADO";
+        boolean reservaEsperada = true;
 
-        Persona pasajero = new Persona("Alfredo", "Luyo");
+        Persona pasajero = new Persona("Alfredo");
         TipoHabitacion tipoHabitacion = new TipoHabitacion("SINGLE", 150.00);
         Habitacion habitacion = new Habitacion(101, tipoHabitacion);
 
-        EstadoReserva estadoReserva = new EstadoReserva(confirma);
+        Reserva reserva = new Reserva("123", pasajero, habitacion, 8, 6, 2012, true, confirma, false);
 
-        Reserva reserva = new Reserva(pasajero, habitacion, 8, 6, 2012, estadoReserva.getEstado(), true);
-
-        boolean checkInEnviado = ControladorReserva.realizaCheckInOut(reserva.isCheck());
-        String reservaEnviada = ControladorReserva.liberarReserva(estadoReserva.getEstado(), reserva.isCheck());
+        boolean checkInEnviado = ControladorReserva.realizaCheckInOut(reserva.isCheckIn());
+        boolean reservaEnviada = ControladorReserva.liberarReserva(confirma, reserva.isCheckOut());
 
         Assert.assertEquals(checkInEsperado,checkInEnviado);
         Assert.assertEquals(reservaEsperada, reservaEnviada);

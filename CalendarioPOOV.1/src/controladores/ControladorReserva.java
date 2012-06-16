@@ -9,19 +9,20 @@ import java.util.Date;
  * @author alfredol
  */
 public class ControladorReserva {
-   public static String confirmarReserva(String confirma){
-        String confirmado = " ";
-        if(confirma.equals("NO CONFIRMADO")){
-            confirmado = "CONFIRMADO";
+
+   public static boolean confirmarReserva(boolean confirma){
+        boolean confirmado = false;
+        if(confirma == false){
+            confirmado = true;
         }else{
             System.out.println("La reserva ya esta confirmada");
-            confirmado = confirma;
+            confirmado = true;
         }
         return confirmado;
     }
 
-    public static String validaAutomaticoFecha(int dia, int mes, int anho, String estado, boolean check){
-        String validado = "";
+    public static boolean validaAutomaticoFecha(int dia, int mes, int anho, boolean estado, boolean check){
+        boolean validado;
         String diaConfirmado, mesConfirmado = " ";
         if(dia > 9){
             diaConfirmado = Integer.toString(dia);
@@ -50,10 +51,10 @@ public class ControladorReserva {
         String fechaSistema = fechaAnho+fechaMes+fechaDia;
         int fsistema = Integer.parseInt(fechaSistema);
 
-        if(fconfirmada > fsistema && check == false){
-            validado = "CANCELADO AUTOMATICO";
+        if(fconfirmada < fsistema && check == false){
+            validado = false;
         }else{
-            validado = estado;
+            validado = true;
         }
 
         return validado;
@@ -71,11 +72,13 @@ public class ControladorReserva {
         return efectuaReserva;
     }
 
-    public static String liberarReserva(String estado, boolean check) {
-        if(estado.equals("CONFIRMADO") && check == true){
-            estado = "CANCELADO";
+    public static boolean liberarReserva(boolean estado, boolean check) {
+
+        if(estado = true && check == true){
+            estado = false;
         }else{
             System.out.println("Reserva NO Cancelada. Verifica estado y check In");
+            estado = true;
         }
         return estado;
     }

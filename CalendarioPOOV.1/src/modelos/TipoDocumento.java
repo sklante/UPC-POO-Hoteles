@@ -10,6 +10,10 @@ public class TipoDocumento {
     
     private String tipoDocumento;
 
+    public TipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+    
     public String getTipoDocumento() {
         return tipoDocumento;
     }
@@ -18,5 +22,8 @@ public class TipoDocumento {
         this.tipoDocumento = tipoDocumento;
     }
     
+    public String toString(){
+        return tipoDocumento;
+    }
     
 }

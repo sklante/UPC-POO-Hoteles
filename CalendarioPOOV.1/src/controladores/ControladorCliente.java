@@ -48,14 +48,6 @@ public class ControladorCliente {
         }
         return true;
     }
-    public static boolean validaContrasena(String password){
-        boolean valido = false;
-       // this.password = null;
-        if(password != null){
-            valido = true;
-        }
-        return valido;
-    }
 
     public static boolean validarIguales(String variable1, String variable2) {
         if (variable1.equals(variable2)) {
@@ -69,7 +61,7 @@ public class ControladorCliente {
         List<String> lista = new ArrayList<String>();
         String formato = nombre.replace("Hotel", "");
         formato = formato.replace("hotel", "");
-        //Metodo del String que elimina los blancos iniciales y finales de una cadena
+
         formato = formato.trim();
         lista.add(formato);
         lista.add(formato + " Starts");
@@ -100,13 +92,6 @@ public class ControladorCliente {
         lista.add("insite" + url);
         return lista;
     }
-
-    public static String asignarLink(String nombreHotel){
-        String link;
-        link = "La dirección Web es http://" + nombreHotel + ".clerk.im";
-
-    return link;
-    }
     
     public static String[] listaString(List<String> listas){
         String[] lista = new String[listas.size()];
@@ -114,6 +99,20 @@ public class ControladorCliente {
             lista[i] = listas.get(i);
         }
         return lista;
+    }
+    public static boolean validaContrasena(String password){
+        boolean valido = false;
+       // this.password = null;
+        if(password != null){
+            valido = true;
+        }
+        return valido;
+    }
+    public static String asignarLink(String nombreHotel){
+        String link;
+        link = "La dirección Web es http://" + nombreHotel + ".clerk.im";
+
+    return link;
     }
 
 }

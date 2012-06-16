@@ -6,24 +6,25 @@ import java.util.Date;
 
 public class Reserva implements InterfaceGeneral{
     
-    private static int id=1;
-    private int idReserva;
+    private String idReserva;
     private Persona cliente;
     private Habitacion habitacion;
     private int dia;
     private int mes;
     private int anio;
-    private EstadoReserva estado;
-    private boolean check;
+    private boolean checkOut;
+    private boolean checkIn;
+    private boolean pendiente;
+    private boolean confirmado;
     private boolean errorInt;
     private boolean errorObject;
     //private Fecha fecha;
     
-    public Reserva(Persona cliente, Habitacion habitacion, int dia, int mes, int anio){
+    public Reserva(String id, Persona cliente, Habitacion habitacion, int dia, int mes, int anio){
         if(cliente == null){
-            this.estado = new EstadoReserva("No Facturado");
+            this.pendiente = false;
         }else{
-            this.estado = new EstadoReserva("Pendiente");
+            this.pendiente = true;
         }
         this.cliente=cliente;
         this.habitacion=habitacion;
@@ -31,47 +32,36 @@ public class Reserva implements InterfaceGeneral{
         this.mes=mes;
         this.anio=anio;
         this.idReserva=id;
-        id++;
         
     }
-    
-    public Reserva(Persona cliente, Habitacion habitacion, int dia, int mes, int anio,
-            String estadoReserva){
+        public Reserva(String id,Persona cliente, Habitacion habitacion, int dia, int mes, int anio,
+            boolean confirmado){
         this.cliente=cliente;
         this.habitacion=habitacion;
         this.dia=dia;
         this.mes=mes;
         this.anio=anio;
-        this.idReserva=id;
-        this.estado = new EstadoReserva(estadoReserva);
-        id++;
-    }
-        public Reserva(Persona cliente, Habitacion habitacion, int dia, int mes, int anio,
-            String estadoReserva, boolean check){
+        this.confirmado = confirmado;
+        this.idReserva = id;
+     }
+        public Reserva(String id,Persona cliente, Habitacion habitacion, int dia, int mes, int anio,
+            boolean confirmado, boolean checkIn, boolean checkOut){
         this.cliente=cliente;
         this.habitacion=habitacion;
         this.dia=dia;
         this.mes=mes;
         this.anio=anio;
-        this.idReserva=id;
-        this.estado = new EstadoReserva(estadoReserva);
-        this.check = check;
-        id++;
-    }
-
-    public boolean isCheck() {
-        return check;
-    }
-
-    public void setCheck(boolean check) {
-        this.check = check;
-    }
+        this.confirmado = confirmado;
+        this.idReserva = id;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+     }
 
     public Fecha getFecha() {
         return new Fecha(this.dia, this.mes, this.anio);
     }
     
-    public int getIdReserva() {
+    public String getIdReserva() {
         return idReserva;
     }
     
@@ -114,6 +104,38 @@ public class Reserva implements InterfaceGeneral{
     public void setMes(int mes) {
         this.mes = mes;
     }
+
+    public boolean isCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(boolean checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public boolean isCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(boolean checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public boolean isConfirmado() {
+        return confirmado;
+    }
+
+    public void setConfirmado(boolean confirmado) {
+        this.confirmado = confirmado;
+    }
+
+    public boolean isPendiente() {
+        return pendiente;
+    }
+
+    public void setPendiente(boolean pendiente) {
+        this.pendiente = pendiente;
+    }
     
     public String toString(){
         if(this.cliente == null){
@@ -135,7 +157,6 @@ public class Reserva implements InterfaceGeneral{
                 "\nDescuento:\t\t\t" + "0.00" +
                 "\nFecha de Reserva:\t\t\t" + this.dia+"/"+this.mes+"/"+this.anio +
                 "\nUsuario del sistema:\t\t\t" + "Cgarrido" + 
-                "\nEstado de la reserva:\t\t\t" + this.estado +
                 "\n\n\nVisitenos nuevamente.";
                
     }

@@ -5,6 +5,10 @@ package modelos;
 public class Medios {
     private String nombre;
     private String medios;
+    
+    public Medios(String nombre){
+        this.nombre = nombre;
+    }
 
     public String getMedios() {
         return medios;

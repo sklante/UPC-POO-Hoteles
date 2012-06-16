@@ -4,12 +4,15 @@
  */
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author operador
  */
 public class Agencia {
-    
+
     private String nombreAgencia;
     private Documento identificacion;
     private String telefono;
@@ -18,7 +21,34 @@ public class Agencia {
     private String ciudad;
     private String estado;
     private String pais;
-    private Persona contacto;
+    private String convenio;
+    private Medios medioDePago;
+    private List<Persona> contacto;
+
+    public Agencia(String nombre, Documento documento, String telefono, String correo, Medios medioDePago) {
+        this.contacto = new ArrayList<Persona>();
+        this.nombreAgencia = nombre;
+        this.identificacion = documento;
+        this.telefono = telefono;
+        this.correoElectronico = correo;
+        this.medioDePago = medioDePago;
+    }
+
+    public Medios getMedioDePago() {
+        return medioDePago;
+    }
+
+    public String getConvenio() {
+        return convenio;
+    }
+
+    public void setConvenio(String convenio) {
+        this.convenio = convenio;
+    }
+
+    public void setMedioDePago(Medios medioDePago) {
+        this.medioDePago = medioDePago;
+    }
 
     public String getCiudad() {
         return ciudad;
@@ -28,11 +58,11 @@ public class Agencia {
         this.ciudad = ciudad;
     }
 
-    public Persona getContacto() {
+    public List<Persona> getContacto() {
         return contacto;
     }
 
-    public void setContacto(Persona contacto) {
+    public void setContacto(List<Persona> contacto) {
         this.contacto = contacto;
     }
 
@@ -91,9 +121,8 @@ public class Agencia {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return this.nombreAgencia;
     }
-
 }

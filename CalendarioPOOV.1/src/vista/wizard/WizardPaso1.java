@@ -42,21 +42,15 @@ public class WizardPaso1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("PASO 1: Definir cantidad de habitaciones");
 
         jLabel2.setText("El tablero esta vacio, necesitamos partir configurando tu Hotel.");
 
         jLabel3.setText("No te preocupes, son solo tres pasos sencillos.");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("¿Cuantas habitaciones tiene tu hotel?");
-
-        txtCantidadHabitaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadHabitacionesActionPerformed(evt);
-            }
-        });
 
         btnSiguiente.setText("Definir Habitaciones >");
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +59,7 @@ public class WizardPaso1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 2, 11));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("En licencia libre, solo podras crear hasta 30 habitaciones");
 
@@ -136,7 +130,7 @@ public class WizardPaso1 extends javax.swing.JFrame {
                     }
                     
                     new TablaTipoHabitaciones().setVisible(true);
-                    this.dispose();//cierra la ventana anterior con sus recursos
+                    this.dispose();
                     System.out.println(MetodosGenerales.hotelGlobal.getNombreHotel());
                     System.out.println(MetodosGenerales.hotelGlobal.getUrlHotel());
                     System.out.println(MetodosGenerales.hotelGlobal.getCantidadHabitaciones());
@@ -152,10 +146,6 @@ public class WizardPaso1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ingrese el numero de habitacion.", "Error ingreso de Datos", 2);
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
-
-    private void txtCantidadHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadHabitacionesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadHabitacionesActionPerformed
 
     /**
      * @param args the command line arguments
